@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
+<head>
+    <title>Monumentos</title>
+
+    <link rel="stylesheet" href="../../css/leaflet.css" />
+    <link rel="stylesheet" href="../../css/MarkerCluster.css" />
+    <link rel="stylesheet" href="../../css/MarkerCluster.Default.css" />
+
+    <script src="../../js/leaflet.js"></script>
+    <script src="../../js/leaflet.ajax.min.js"></script>
+    <script src="../../js/leaflet.markercluster.js"></script>
+</head>
+
+<body>
+    <h2>Monumentos</h2>
+
+    <div id="mapa-leaflet" style="height:30em"></div>
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/capas.js"></script>
+    <script type="text/javascript">
+    $.getJSON("http://www.zaragoza.es/api/recurso/turismo/monumento.geojson?srsname=wgs84&rows=2000&fl=id,title,description,geometry", function(data) {
+        var geojson = L.geoJson(data, {
+            onEachFeature: function(feature, layer) {
+                var txt;
+                txt = '<strong>' + feature.properties.title + '</strong><br/>' + feature.properties.description;
+                layer.bindPopup(txt);
+            }
+        });
+
+        map.fitBounds(geojson.getBounds());
+        markers = L.markerClusterGroup();
+        markers.addLayer(geojson);
+        map.addLayer(markers);
+    });
+    </script>
+</body>
+
+</html>

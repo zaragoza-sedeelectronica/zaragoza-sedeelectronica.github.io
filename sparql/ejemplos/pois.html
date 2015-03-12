@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
+<head>
+    <title>Recursos cercanos a la bas&iacute;lica del Pilar</title>
+
+    <link rel="stylesheet" href="../../css/leaflet.css" />
+    <link rel="stylesheet" href="../../css/MarkerCluster.css" />
+    <link rel="stylesheet" href="../../css/MarkerCluster.Default.css" />
+
+    <script src="../../js/leaflet.js"></script>
+    <script src="../../js/leaflet.ajax.min.js"></script>
+    <script src="../../js/leaflet.markercluster.js"></script>
+</head>
+
+<body>
+    <h2>Recursos cercanos a la bas&iacute;lica del Pilar</h2>
+
+    <div id="mapa-leaflet" style="height:30em"></div>
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/capas.js"></script>
+    <script type="text/javascript">
+    var SPARQL_ENDPOINT = 'http://datos.zaragoza.es/sparql';
+    var query = 'SELECT DISTINCT (group_concat(distinct ?type;separator=",")) as ?type ?uri ?title ?description ?latitud ?longitud  WHERE \
+        {\
+            ?monum geo:geometry ?geoMonum .\
+            FILTER(?monum=<http://www.zaragoza.es/api/recurso/turismo/monumento/32>).\
+            ?geoMonum geo:lat ?latM;\
+            geo:long ?lngM .\
+            ?uri a ?type.\
+            ?uri rdfs:label ?title.\
+            optional{?uri rdfs:comment ?description.}\
+            ?uri geo:geometry ?geo .\
+            ?geo geo:lat ?latitud.\
+            ?geo geo:long ?longitud .\
+            FILTER(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?longitud, ?latitud))<0.3)\
+        }\
+        ORDER BY ASC(?distancia)';
+
+
+    $.getJSON(SPARQL_ENDPOINT + '?query=' + encodeURIComponent(query) + '&format=application%2Fsparql-results%2Bjson&timeout=0', function(data) {
+        var geojson = L.layerGroup();
+        var feature;
+        for (var i = 0; i < data.results.bindings.length; i++) {
+            feature = data.results.bindings[i];
+            marker = new L.marker([feature.latitud.value, feature.longitud.value])
+                .bindPopup('<strong>' + feature.title.value + '</strong><br/>' + feature.type.value + '<br/>' + (feature.description ? feature.description.value : ''))
+                .addTo(geojson);
+        }
+
+        markers = L.markerClusterGroup();
+        markers.addLayer(geojson);
+        map.fitBounds(markers.getBounds());
+        map.addLayer(markers);
+    });
+    </script>
+</body>
+
+</html>
