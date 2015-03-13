@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
+<head>
+    <title>Monumentos</title>
+    <style type="text/css">
+    #resultados {
+        width: 75%;
+        float: left;
+    }
+    #facetas {
+        width: 25%;
+        float: right;
+    }
+    </style>
+</head>
+
+<body>
+    <h2>Monumentos</h2>
+    <p>B&uacute;squeda facetada de monumentos por el campo <strong>estilo_smultiple</strong>
+    </p>
+    <div id="resultados">
+        <ul></ul>
+    </div>
+    <div id="facetas">
+        <ul></ul>
+    </div>
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+    var SOLR_ENDPOINT = 'http://www.zaragoza.es/buscador/select?';
+    var query = '*:*';
+    var start = 0;
+    var rows = 1000;
+    var facet = 'estilos_smultiple';
+    var category = '("Monumentos")';
+
+    mostrar("");
+
+    function mostrar(fq) {
+        if (fq !== "") {
+            fq = '"' + fq + '"';
+        }
+        $.ajax({
+            method: 'JSONP',
+            url: SOLR_ENDPOINT,
+            dataType: "jsonp",
+            data: {
+                'json.wrf': 'JSON_CALLBACK',
+                'wt': 'json',
+                'start': start || 0,
+                'rows': rows || 100,
+                'facet': 'true',
+                'facet.field': facet,
+                'facet.mincount': 1,
+                'fl': 'uri,title,id,texto_t,x_coordinate,y_coordinate,last_modified,temas_smultiple',
+                'q': query + ' AND -tipocontenido_s:estatico AND category:' + category,
+                'fq': fq
+            }
+        });
+    }
+
+    function JSON_CALLBACK(respuesta) {
+        console.log(respuesta); // server response
+        var obj;
+        $("#resultados ul").empty();
+        for (var i = 0; i < respuesta.response.docs.length; i++) {
+            obj = respuesta.response.docs[i];
+            $("#resultados ul").append('<li>' + obj.title + '</li>');
+        }
+        $("#facetas ul").empty();
+        for (var i = 0; i < respuesta.facet_counts.facet_fields[facet].length; i++) {
+            respuesta.facet_counts.facet_fields[facet][i];
+            var txt = '<button onclick="mostrar(\'' + respuesta.facet_counts.facet_fields[facet][i] + '\')">' + respuesta.facet_counts.facet_fields[facet][i] + '</button>';
+            i = i + 1;
+            txt = txt + '(' + respuesta.facet_counts.facet_fields[facet][i] + ')';
+            $("#facetas ul").append('<li>' + txt + '</li>');
+        }
+    }
+    </script>
+</body>
+
+</html>
