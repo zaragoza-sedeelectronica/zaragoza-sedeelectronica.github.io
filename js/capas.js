@@ -40,7 +40,7 @@ var overlays = {
     "Catastro": catastro
 };
 
-L.control.layers(baseMaps,overlays).addTo(map);
+var lcontrol = L.control.layers(baseMaps,overlays).addTo(map);
 
 
 // Closure
