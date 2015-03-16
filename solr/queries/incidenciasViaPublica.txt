@@ -1,0 +1,13 @@
+#
+#	Cátalogo de conjunto de datos: incidencias en la vía pública
+#	Licencia: http://www.zaragoza.es/ciudad/servicios/avisolegal.htm#condiciones
+#
+
+# Obtener los 20 primeros registros
+http://www.zaragoza.es/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:Incidencias&rows=20
+
+# Obtener las primeras 20 incidencias vigentes
+http://www.zaragoza.es/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:Incidencias%20AND%20fechaInicio_dt:[*%20TO%20NOW]%20AND%20(fechaFinPublicacion_dt:[NOW%20TO%20*]%20OR%20(*:*%20-fechaFinPublicacion_dt:[*%20TO%20*]))&rows=20
+
+# Obtener las primeras 20 incidencias de junio de 2011
+http://www.zaragoza.es/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:Incidencias&amp;fq=fechaInicio_dt:[2011-06-01T00:00:00.000Z%20TO%202011-06-30T23:59:00.000Z]&rows=20

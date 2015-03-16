@@ -1,0 +1,10 @@
+#
+#	Cátalogo de conjunto de datos: estaciones bizi
+#	Licencia: http://www.zaragoza.es/ciudad/servicios/avisolegal.htm#condiciones
+#
+
+# Obtener los 20 primeros registros
+http://www.zaragoza.es/buscador/select?q=category:Bizi&rows=20
+
+# Obtener las 20 primeras estaciones que tienen bicicletas disponibles
+http://www.zaragoza.es/buscador/select?q=category:Bizi%20AND%20bicisdisponibles_i:[1%20TO%20*]&rows=20
