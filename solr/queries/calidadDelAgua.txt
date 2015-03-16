@@ -8,7 +8,7 @@ http://www.zaragoza.es/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%2
 
 
 # Obtener los 20 primeros registros de la estación de Valdespartera
-http://www.zaragoza.es/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:(%22Calidad%20del%20agua%22)&fq=estacion_smultiple:(%22Dep\u00f3sito%20de%20Valdespartera%22)&rows=20"></a>	
+http://www.zaragoza.es/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:(%22Calidad%20del%20agua%22)&fq=estacion_smultiple:(%22Dep\u00f3sito%20de%20Valdespartera%22)&rows=20
 
 # Obtener los valores de un registro
 http://www.zaragoza.es/buscador/select?q=id:imsp-12_00428
