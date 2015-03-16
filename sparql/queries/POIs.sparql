@@ -1,0 +1,19 @@
+#Listado de 100 recursos a menos de 300 metros de la basĺlica del Pilar
+
+SELECT DISTINCT (group_concat(distinct ?type;separator=",")) as ?type ?uri ?title ?description ?latitud ?longitud (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?longitud, ?latitud)))AS ?distancia) WHERE
+{
+  ?monum geo:geometry ?geoMonum .
+  FILTER(?monum=<http://www.zaragoza.es/api/recurso/turismo/monumento/32>).
+  ?geoMonum geo:lat ?latM;
+  geo:long ?lngM .
+  ?uri a ?type.
+  ?uri rdfs:label ?title.
+  optional{?uri rdfs:comment ?description.}
+  ?uri geo:geometry ?geo .
+  ?geo geo:lat ?latitud.
+  ?geo geo:long ?longitud .
+  FILTER(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?longitud, ?latitud))<0.3)
+}
+ORDER BY ASC(?distancia)
+
+LIMIT 100
