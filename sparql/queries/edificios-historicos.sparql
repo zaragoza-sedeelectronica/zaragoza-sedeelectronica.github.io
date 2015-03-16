@@ -1,0 +1,38 @@
+#Contar el número de registros
+
+select COUNT(?Concepto) AS ?numero
+Where{
+?Concepto a <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#EdificioHistorico>. }
+
+
+#Listado de edificios históricos cercanos al hotel en el que me alojo (ej. id=12600)
+
+SELECT DISTINCT ?rest ?restName (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR)))AS ?distancia) WHERE
+{
+  ?monum geo:geometry ?geo .
+  FILTER(?monum=<http://www.zaragoza.es/api/recurso/turismo/alojamiento/12600>).
+  ?geo geo:lat ?latM;
+  geo:long ?lngM .
+  ?rest a <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#EdificioHistorico>.
+  ?rest rdfs:label ?restName.
+
+  ?rest owl:sameAs ?edificio.
+
+  ?edificio geo:geometry ?geoRest .
+  ?geoRest geo:lat ?latR.
+  ?geoRest geo:long ?lngR .
+  FILTER(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR))<1)
+}
+ORDER BY ASC(?distancia)
+
+
+#Listado de edificios históricos de interés ambiental
+
+SELECT DISTINCT ?uri ?title
+WHERE {
+  ?uri a <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#EdificioHistorico>.
+  ?uri rdfs:label ?title.
+  ?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#gradoProteccion> ?faceta
+  FILTER regex(?faceta, "Interés Ambiental")
+}
+LIMIT 100
