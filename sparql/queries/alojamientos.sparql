@@ -1,7 +1,8 @@
 #Alojamientos cercanos a la Basílica del Pilar
 PREFIX tur:<http://vocab.linkeddata.es/kos/turismo/>
 PREFIX mon:<http://www.zaragoza.es/api/recurso/turismo/monumento/>
-SELECT DISTINCT ?rest ?restName (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR)))AS ?distancia)  
+SELECT DISTINCT ?rest ?restName (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),
+		bif:st_point (?lngR, ?latR))) AS ?distancia)  
 WHERE {
 	?monum geo:geometry ?geoMonum.
 	FILTER(?monum=mon:32).
@@ -26,18 +27,24 @@ WHERE {
 }
 
 #Hoteles de tres estrellas	
+PREFIX alo: <http://vocab.linkeddata.es/datosabiertos/def/turismo/alojamiento#>
 SELECT DISTINCT ?rest ?restName 
 WHERE {
 	?rest a <http://vocab.linkeddata.es/kos/turismo/alojamiento>;
 		rdfs:label ?restName;
-		<http://vocab.linkeddata.es/datosabiertos/def/turismo/alojamiento#categoria> ?categoria.
+		alo:categoria ?categoria.
 	FILTER(regex(?categoria, "Hotel 3 estrellas")).
 }
 
 
 #Detalle del alojamiento 16	
 PREFIX locn: <http://www.w3.org/ns/locn#>
-SELECT distinct ?uri ?title ?latitud ?longitud ?modified ?tel ?fax ?comment ?accesibilidad ?numCamas ?numHabitaciones ?streetAdr ?addressLocality ?postCode ?email ?socioHoreca ?categoria ?locality ?logo ?photo ?url
+PREFIX v: <http://www.w3.org/2006/vcard/ns#>
+PREFIX lug: <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#>
+PREFIX alo: <http://vocab.linkeddata.es/datosabiertos/def/turismo/alojamiento#>
+PREFIX s: <http://schema.org/>
+SELECT distinct ?uri ?title ?latitud ?longitud ?modified ?tel ?fax ?comment ?accesibilidad ?numCamas 
+		?numHabitaciones ?streetAdr ?addressLocality ?postCode ?email ?categoria ?logo ?photo ?url
 WHERE { 
 	?uri a <http://vocab.linkeddata.es/kos/turismo/alojamiento>.
 	OPTIONAL {?uri rdfs:label  ?title.}
@@ -45,18 +52,17 @@ WHERE {
 	OPTIONAL {?uri rdfs:comment  ?comment.}
 	OPTIONAL {?uri s:addressLocality  ?addressLocality.}
 	OPTIONAL {?uri locn:postCode  ?postCode.}
-	OPTIONAL {?uri <http://schema.org/email>  ?email.}
-	OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#logo>  ?logo.}
-	OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#photo>  ?photo.}
-	OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#url>  ?url.}
-	OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#street-adr>  ?streetAdr.}
-	OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/alojamiento#numCamas>  ?numCamas.}
-	OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/alojamiento#numHabitaciones>  ?numHabitaciones.}
-	OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#accesibilidad>  ?accesibilidad.}
-	OPTIONAL {?uri <http://www.zaragoza.es/api/def/turismo/lugar#socioHoreca>  ?socioHoreca.}
-	OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/alojamiento#categoria> ?categoria.}
-	OPTIONAL {?uri <http://schema.org/telephone> ?tel.}
-	OPTIONAL {?uri <http://schema.org/faxNumber> ?fax.}
+	OPTIONAL {?uri s:email  ?email.}
+	OPTIONAL {?uri v:logo  ?logo.}
+	OPTIONAL {?uri v:photo  ?photo.}
+	OPTIONAL {?uri v:url  ?url.}
+	OPTIONAL {?uri v:street-adr  ?streetAdr.}
+	OPTIONAL {?uri alo:numCamas  ?numCamas.}
+	OPTIONAL {?uri alo:numHabitaciones  ?numHabitaciones.}
+	OPTIONAL {?uri lug:accesibilidad  ?accesibilidad.}
+	OPTIONAL {?uri alo:categoria ?categoria.}
+	OPTIONAL {?uri s:telephone ?tel.}
+	OPTIONAL {?uri s:faxNumber ?fax.}
 	OPTIONAL {
 		?uri geo:geometry ?geo.
 		?geo geo:lat ?latitud.
