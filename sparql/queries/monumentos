@@ -1,0 +1,36 @@
+#Top de monumentos
+
+PREFIX monumento: <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#>
+
+SELECT DISTINCT ?uri ?title
+WHERE { ?uri a monumento:LugarInteresTuristico.
+  OPTIONAL{ ?uri rdfs:label ?title}.
+  ?uri monumento:destacado "S".
+}
+
+
+#Detalle de un monumento (ej. id=32)
+
+SELECT distinct ?uri ?title ?latitud ?longitud ?modified ?tel ?fax ?comment ?foursquare ?datacion ?uso ?datosAcceso ?estilo ?puntosInteres ?streetAdr ?horario ?price ?detalleVisita ?photo
+WHERE { ?uri a <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#LugarInteresTuristico>.
+  OPTIONAL {?uri rdfs:label ?title.}
+  OPTIONAL {?uri dcterms:modified ?modified.}
+  OPTIONAL {?uri rdfs:comment ?comment.}
+  OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#photo> ?photo.}
+  OPTIONAL {?uri <http://schema.org/streetAddress> ?streetAdr.}
+  OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#estiloArtistico> ?estilo.}
+  OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#puntosInteres> ?puntosInteres.}
+  OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#datacion> ?datacion.}
+  OPTIONAL {?uri <http://schema.org/price> ?price.}
+  OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#uso> ?uso.}
+  OPTIONAL {?uri <http://schema.org/openingHours> ?horario.}
+  OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#foursquare> ?foursquare.}
+  OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#datosAcceso> ?datosAcceso.}
+  OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#detalleVisita> ?detalleVisita.}
+  OPTIONAL {?uri <http://schema.org/telephone> ?tel.}
+  OPTIONAL {?uri <http://schema.org/faxNumber> ?fax.}
+  OPTIONAL {?uri geo:geometry ?geo.
+  ?geo geo:lat ?latitud.
+  ?geo geo:long ?longitud}.
+  ?uri dcterms:identifier "32".
+}
