@@ -1,0 +1,18 @@
+PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX s: <http://schema.org/>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX pc: <http://purl.org/procurement/public-contracts#>
+
+SELECT SUM(distinct ?currencyValue) 
+WHERE {
+  ?uriCont a pproc:Contract;
+  pproc:contractObject/pproc:contractEconomicConditions/pproc:budgetPrice ?budgetPrice;
+  pc:tender ?tender.
+  ?tender pproc:formalizedDate ?formalizedDate;
+  pc:supplier ?supplier;
+  pc:offeredPrice ?offeredPrice.
+  ?supplier s:name ?name .
+  ?offeredPrice gr:hasCurrencyValue ?currencyValue;
+  gr:valueAddedTaxIncluded ?taxIncluded.
+  FILTER ((?taxIncluded) AND regex(?name, "xxx", "i"))
+}
