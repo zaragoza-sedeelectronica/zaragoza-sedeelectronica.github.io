@@ -1,0 +1,46 @@
+#Listado de actividades destacadas
+
+PREFIX acto: <http://vocab.linkeddata.es/datosabiertos/def/cultura-ocio/agenda#>
+
+SELECT DISTINCT ?uri ?title ?latitud ?longitud
+WHERE { ?uri a acto:Evento.
+  OPTIONAL{ ?uri rdfs:label ?title}.
+  OPTIONAL {?uri geo:geometry ?geo.
+  ?geo geo:lat ?latitud.
+  ?geo geo:long ?longitud}.
+  ?uri acto:destacada "true".
+}
+
+
+#Actividades cercanas a un monumento (ej. id=32)
+
+PREFIX acto: <http://vocab.linkeddata.es/datosabiertos/def/cultura-ocio/agenda#>
+SELECT DISTINCT ?uri ?title (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR)))AS ?distancia) WHERE
+{
+  ?monum geo:geometry ?geoMonum .
+  FILTER(?monum=<http://www.zaragoza.es/api/recurso/turismo/monumento/32>).
+  ?geoMonum geo:lat ?latM;
+  geo:long ?lngM .
+  ?uri a acto:Evento.
+  ?uri dcterms:title ?title.
+  ?uri geo:geometry ?geo .
+  ?geo geo:lat ?latR.
+  ?geo geo:long ?lngR .
+  FILTER(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR))<1)
+}
+ORDER BY ASC(?distancia)
+
+
+#Listado de actividades que se realizan en Zaragoza Activa
+
+PREFIX acto: <http://vocab.linkeddata.es/datosabiertos/def/cultura-ocio/agenda#>
+PREFIX rec: <http://www.zaragoza.es/api/recurso/cultura-ocio/lugar/evento-zaragoza/>
+PREFIX s: <http://schema.org/>
+
+SELECT DISTINCT ?uri ?title
+WHERE {
+  ?uri a acto:Evento.
+  ?uri rdfs:label ?title.
+  ?uri s:subEvent ?subevent.
+  ?subevent s:location rec:rec-4907.
+}
