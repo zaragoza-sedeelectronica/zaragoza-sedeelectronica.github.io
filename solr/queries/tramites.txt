@@ -4,10 +4,10 @@
 #
 
 # Obtener los 20 primeros registros
-/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:Tr\u00e1mites&rows=20"></a>	
+http://www.zaragoza.es/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:Tr\u00e1mites&rows=20"></a>	
 
 # Obtener los 20 primeros trámites que se pueden hacer con certificado electrónico
-/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:Tr\u00e1mites%20AND%20certificado_b:true&rows=20
+http://www.zaragoza.es/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:Tr\u00e1mites%20AND%20certificado_b:true&rows=20
 
 # Obtener los 20 primeros procedimientos relacionados con el Agua
-/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:Tr\u00e1mites%20AND%20temas_smultiple:(%22Agua%22)&rows=20
+http://www.zaragoza.es/buscador/select?q=*:*%20AND%20-tipocontenido_s:estatico%20AND%20category:Tr\u00e1mites%20AND%20temas_smultiple:(%22Agua%22)&rows=20
