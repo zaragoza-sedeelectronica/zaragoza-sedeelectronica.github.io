@@ -1,0 +1,29 @@
+#Listado de categorías de equipamientos
+
+SELECT DISTINCT ?tema ?name WHERE {
+  ?uriCont a <http://vocab.linkeddata.es/kos/urbanismo-infraestructuras/equipamiento>.
+  ?uriCont <http://www.w3.org/2006/vcard/ns#category> ?tema.
+  ?tema rdfs:label ?name
+}
+
+
+#Listado de campos de fútbol
+
+SELECT DISTINCT ?uri ?title
+WHERE { 
+  ?uri a <http://vocab.linkeddata.es/kos/urbanismo-infraestructuras/equipamiento>.
+  ?uri <http://www.w3.org/2006/vcard/ns#category> <http://www.zaragoza.es/api/recurso/urbanismo-infraestructuras/equipamiento/subtema/55>.
+  OPTIONAL{ ?uri rdfs:label ?title}.
+} 
+
+
+#Listado de equipamientos dirigidos a infancia
+
+SELECT DISTINCT ?uri ?title ?latitud ?longitud
+WHERE { ?uri a <http://vocab.linkeddata.es/kos/urbanismo-infraestructuras/equipamiento>.
+  OPTIONAL{ ?uri rdfs:label ?title}.
+  OPTIONAL {?uri geo:geometry ?geo.
+  ?geo geo:lat ?latitud.
+  ?geo geo:long ?longitud}.
+  ?uri <http://schema.org/typicalAgeRange> <http://www.zaragoza.es/api/recurso/clase-persona/18>
+} 
