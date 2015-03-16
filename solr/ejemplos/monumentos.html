@@ -34,7 +34,7 @@
     var facet = 'estilos_smultiple';
     var category = '("Monumentos")';
 
-    mostrar("");
+    mostrar(""); // Por defecto mostramos sin ningún filtro de faceta
 
     function mostrar(fq) {
         if (fq !== "") {
@@ -60,7 +60,6 @@
     }
 
     function JSON_CALLBACK(respuesta) {
-        console.log(respuesta); // server response
         var obj;
         $("#resultados ul").empty();
         for (var i = 0; i < respuesta.response.docs.length; i++) {
