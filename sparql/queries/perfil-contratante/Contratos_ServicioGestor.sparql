@@ -1,0 +1,10 @@
+PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?uri ?titulo ?servicioGestor
+WHERE {
+  ?uri a <http://contsem.unizar.es/def/sector-publico/pproc#Contract>;
+  dcterms:title ?titulo;
+  pproc:managingDepartment ?managingDepartment.
+  ?managingDepartment dcterms:title ?servicioGestor
+} ORDER BY ?titulo
