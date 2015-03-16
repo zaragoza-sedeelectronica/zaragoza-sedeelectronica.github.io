@@ -1,0 +1,103 @@
+#Consultar todos los atributos de los restaurantes
+
+select distinct ?uri
+where {?uriCont a <http://vocab.linkeddata.es/kos/turismo/restaurante>;
+  ?uri ?obj
+}
+
+
+#Listado de todos los restaurantes cercanos a la Basílica del Pilar (monumento con id=32)
+
+SELECT DISTINCT ?rest ?restName (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR)))AS ?distancia) WHERE
+{
+  ?monum geo:geometry ?geoMonum .
+  FILTER(?monum=<http://www.zaragoza.es/api/recurso/turismo/monumento/32>).
+  ?geoMonum geo:lat ?latM;
+  geo:long ?lngM .
+  ?rest a <http://vocab.linkeddata.es/kos/turismo/restaurante>.
+  ?rest dcterms:title ?restName.
+  ?rest geo:geometry ?geoRest .
+  ?geoRest geo:lat ?latR.
+  ?geoRest geo:long ?lngR .
+  FILTER(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR))<1)
+}
+ORDER BY ASC(?distancia)
+
+
+#Listado de restaurantes en ETRS89
+
+PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
+SELECT distinct ?uri ?title ?wktMonumento ?type
+WHERE { ?uri a <http://vocab.linkeddata.es/kos/turismo/restaurante>.
+  OPTIONAL {?uri rdfs:label ?title.}
+  OPTIONAL {
+  ?uri geo:geometry ?geo .
+  ?geo a ?type;
+  geosparql:asWKT ?wktMonumento .}.
+  FILTER (contains(?wktMonumento,'http://www.opengis.net/def/crs/EPSG/0/25830'))
+}
+
+
+#Listado de restaurantes en UTM30
+
+PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
+
+SELECT distinct ?uri ?title ?wktMonumento ?type
+WHERE { ?uri a <http://vocab.linkeddata.es/kos/turismo/restaurante>.
+  OPTIONAL {?uri rdfs:label ?title.}
+  OPTIONAL {
+  ?uri geo:geometry ?geo .
+  ?geo a ?type;
+  geosparql:asWKT ?wktMonumento .}.
+  FILTER (contains(?wktMonumento,'http://www.opengis.net/def/crs/EPSG/0/23030'))
+}
+
+
+#Listado de restaurantes en WGS84
+
+SELECT distinct ?uri ?title ?latitud ?longitud
+WHERE { ?uri a <http://vocab.linkeddata.es/kos/turismo/restaurante>.
+  OPTIONAL {?uri rdfs:label ?title.}
+  OPTIONAL {?uri geo:geometry ?geo.
+  ?geo geo:lat ?latitud.
+  ?geo geo:long ?longitud}.
+}
+
+
+#Detalle de un restaurante (ej. id=14)
+
+PREFIX locn: <http://www.w3.org/ns/locn#>
+
+SELECT distinct ?uri ?title ?latitud ?longitud ?modified ?tel ?comment ?accesibilidad ?servesCuisine ?tenedores ?capacidad ?streetAdr ?addressLocality ?postCode ?email ?socioHoreca ?restauranteEnHotel ?fincaCatering ?locality ?logo ?photo ?url
+WHERE { ?uri a <http://vocab.linkeddata.es/kos/turismo/restaurante>.
+
+  OPTIONAL {?uri rdfs:label ?title.}
+  OPTIONAL {?uri dcterms:modified ?modified.}
+  OPTIONAL {?uri rdfs:comment ?comment.}
+  OPTIONAL {?uri s:addressLocality ?addressLocality.}
+  OPTIONAL {?uri locn:postCode ?postCode.}
+  OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#email> ?email.}
+  OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#locality> ?locality.}
+  OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#logo> ?logo.}
+  OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#photo> ?photo.}
+  OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#url> ?url.}
+  OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#street-adr> ?streetAdr.}
+
+  OPTIONAL {?uri <http://www.zaragoza.es/skos/vocab/tenedores> ?tenedores.}
+  OPTIONAL {?uri <http://www.zaragoza.es/skos/vocab/capacidad> ?capacidad.}
+  OPTIONAL {?uri <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#accesibilidad> ?accesibilidad.}
+  OPTIONAL {?uri <http://www.zaragoza.es/skos/vocab/restauranteEnHotel> ?restauranteEnHotel.}
+  OPTIONAL {?uri <http://www.zaragoza.es/api/def/turismo/lugar#socioHoreca> ?socioHoreca.}
+  OPTIONAL {?uri <http://schema.org/servesCuisine> ?servesCuisine.}
+  OPTIONAL {?uri <http://www.zaragoza.es/skos/vocab/fincaCatering> ?fincaCatering.}
+
+  OPTIONAL {?uri <http://www.w3.org/2006/vcard/ns#tel> ?telin.
+  ?telin <http://www.w3.org/2006/vcard/ns#Tel> ?tel.
+  }
+
+  OPTIONAL {?uri geo:geometry ?geo.
+  ?geo geo:lat ?latitud.
+  ?geo geo:long ?longitud}.
+
+  ?uri dcterms:identifier "14".
+}
