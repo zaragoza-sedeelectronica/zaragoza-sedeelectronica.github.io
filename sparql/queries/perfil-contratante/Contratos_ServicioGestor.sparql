@@ -7,4 +7,5 @@ WHERE {
   dcterms:title ?titulo;
   pproc:managingDepartment ?managingDepartment.
   ?managingDepartment dcterms:title ?servicioGestor
-} ORDER BY ?titulo
+} 
+ORDER BY ?titulo
