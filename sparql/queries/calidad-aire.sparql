@@ -1,0 +1,58 @@
+#Dada una estación permite obtener el contaminante, estación, fecha, valor de la medición horaria y estado de verificación
+
+PREFIX ssn:<http://purl.oclc.org/NET/ssnx/ssn#>
+PREFIX ssnext:<http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/calidad-aire/ssn-ext#>
+PREFIX dul:<http://www.loa-cnr.it/ontologies/DUL.owl#>
+select distinct ?magnitud ?estacion ?fecha ?valor ?verif
+where {
+  ?uri a ssn:Observation;
+  ssn:observedBy ?estacion;
+  ssn:observationResult ?res;
+  ssn:observedProperty ?magnitud;
+  ssnext:observationStatus ?verif;
+  ssn:observationResultTime ?fecha.
+  ?res ssn:hasValue/dul:hasDataValue ?valor
+  filter (?fecha>"2015-02-04"^^xsd:date and ?fecha<="2015-02-05"^^xsd:date and 
+  ?estacion=<http://www.zaragoza.es/api/recurso/medio-ambiente/calidad-aire/estacion/26> and regex(?uri, "horaria"))
+}
+order by ?magnitud ?estacion ?fecha
+
+
+#Dada una estación y una fecha concreta permite obtener el contaminante, estación, fecha, valor de 
+#la medición horaria y estado de verificación
+
+PREFIX ssn:<http://purl.oclc.org/NET/ssnx/ssn#>
+PREFIX ssnext:<http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/calidad-aire/ssn-ext#>
+PREFIX dul:<http://www.loa-cnr.it/ontologies/DUL.owl#>
+select distinct ?magnitud ?estacion ?fecha ?valor ?verif
+where {
+  ?uri a ssn:Observation;
+  ssn:observedBy ?estacion;
+  ssn:observationResult ?res;
+  ssn:observedProperty ?magnitud;
+  ssnext:observationStatus ?verif;
+  ssn:observationResultTime ?fecha.
+  ?res ssn:hasValue/dul:hasDataValue ?valor
+  filter (?fecha>"2015-02-04"^^xsd:date and ?fecha<="2015-02-05"^^xsd:date and ?estacion=<http://www.zaragoza.es/api/recurso/medio-ambiente/calidad-aire/estacion/26> and regex(?uri, "diaria"))
+}
+order by ?magnitud ?estacion ?fecha
+
+
+#Obtención de las propiedades de una estación
+
+PREFIX ssn:<http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/meteorologia#>
+PREFIX ssnext:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dul:<http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/calidad-aire#>
+PREFIX loc:<http://www.w3.org/ns/locn#>
+PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>
+select distinct ?label ?distancia ?via ?trafico ?zona ?address ?geo
+where {
+  ?uri a ssn:Estacion;
+  ssnext:label ?label;
+  dul:distanciaObstaculos ?distancia;
+  dul:distanciaVia ?via;
+  dul:trafico ?trafico;
+  dul:zona ?zona;
+  loc:address ?address;
+  geo:geometry ?geo
+} 
