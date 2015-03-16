@@ -1,0 +1,24 @@
+PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX s: <http://schema.org/>
+PREFIX pc: <http://purl.org/procurement/public-contracts#>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT ?adjudicatario SUM(?importe) as ?totalAdjudicaciones ?entidad 
+WHERE {
+  SELECT DISTINCT ?contrato  ?adjudicatario ?importe ?entidad 
+  WHERE {
+        ?contrato a pproc:Contract;
+        a ?type;
+        pc:contractingAuthority ?contractingAuthority;
+        pc:tender ?tender.
+        ?contractingAuthority dcterms:title ?entidad.
+        ?tender pc:supplier ?supplier.
+        ?supplier s:name ?adjudicatario.
+        ?tender pc:offeredPrice ?offeredPriceVAT;
+        pproc:formalizedDate ?formalizedDate.
+        ?offeredPriceVAT gr:hasCurrencyValue ?importe;
+        gr:valueAddedTaxIncluded "true"^^xsd:boolean.
+        ?contrato pproc:contractProcedureSpecifications ?procedureType.
+        ?procedureType pproc:procedureType ?procedimiento.FILTER ( regex(?formalizedDate, "2014")) 
+        }
+} 
