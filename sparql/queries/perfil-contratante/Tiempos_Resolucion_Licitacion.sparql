@@ -1,0 +1,13 @@
+PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX pc: <http://purl.org/procurement/public-contracts#>
+
+SELECT distinct ?uri ?fechaLicitacion ?fechaAdjudicacion ?fechaFormalizacion 
+WHERE {
+  ?uri a pproc:Contract;
+  pproc:contractProcedureSpecifications ?contractProcedureSpecifications;
+  pc:tender ?tender.
+  ?contractProcedureSpecifications pproc:tenderDossierStartDate ?fechaLicitacion.
+  ?tender pproc:awardDate ?fechaAdjudicacion;
+  pproc:formalizedDate ?fechaFormalizacion.
+}
