@@ -1,0 +1,45 @@
+# Entidades de primer nivel, debe de ser nivel = 2 porque el nivel 1 es para describir al Ayuntamiento de Zaragoza
+PREFIX orgzar: <http://vocab.linkeddata.es/kos/sector-publico/> 
+PREFIX org: <http://datos.gob.es/voc/sector-publico/org#> 
+SELECT DISTINCT str(?nombre) as ?nombre  WHERE {                        
+        ?uri a orgzar:organismo. 
+        ?uri rdfs:label ?nombre.
+        ?uri org:hierarchicalLevel ?nivel
+        FILTER(?nivel='2')
+}
+# Listar Servicios que dependen de la Dirección de Ciencia y Tecnología id=26009
+PREFIX orgzar: <http://vocab.linkeddata.es/kos/sector-publico/> 
+PREFIX w3org: <http://www.w3.org/ns/org#> 
+SELECT DISTINCT ?uri str(?nombre) as ?nombre ?superior WHERE {
+        ?uri a orgzar:organismo. 
+       ?uri rdfs:label ?nombre.
+      ?uri w3org:unitOf ?superior
+        FILTER(?superior=<http://www.zaragoza.es/api/recurso/sector-publico/organismo/26009>)
+}
+# Listar Dependencias ubicadas en el Edificio Seminario (Via Hispanidad, 20)
+PREFIX orgzar: <http://vocab.linkeddata.es/kos/sector-publico/> 
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+SELECT DISTINCT ?uri str(?nombre) as ?nombre str(?address) as ?address WHERE {
+        ?uri a orgzar:organismo. 
+        ?uri rdfs:label ?nombre.
+        ?uri vcard:address ?addressInt.
+                ?addressInt vcard:street-adr ?address.
+        FILTER(?address="HISPANIDAD, VIA,20"^^xsd:string)
+}
+# Listar en detalle el Organismo con identificador 26009
+PREFIX orgzar: <http://vocab.linkeddata.es/kos/sector-publico/> 
+PREFIX w3org: <http://www.w3.org/ns/org#> 
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#> 
+SELECT DISTINCT ?uri str(?nombre) as ?nombre ?superior ?purpose str(?cp) as ?cp str(?address) as ?address ?fax ?email ?tel 
+WHERE { 
+        ?uri a orgzar:organismo. 
+        ?uri dcterms:identifier '26009'. 
+        ?uri rdfs:label ?nombre. 
+        ?uri w3org:unitOf ?superior. 
+        OPTIONAL {?uri w3org:purpose ?purpose.} 
+        OPTIONAL {?uri vcard:hasPostalCode ?cp.} 
+        OPTIONAL {?uri vcard:address/vcard:street-adr ?address.} 
+        OPTIONAL {?uri vcard:faxNumber ?fax.} 
+        OPTIONAL {?uri vcard:hasEmail ?email.} 
+        OPTIONAL {?uri vcard:tel ?tel.} 
+}
