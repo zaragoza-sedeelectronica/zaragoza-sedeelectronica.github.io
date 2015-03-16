@@ -1,0 +1,48 @@
+#Contar los registros
+
+select COUNT(?Concepto) AS ?numero
+Where{
+  ?Concepto a <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via>
+}
+
+#Listado de calles
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX callejero: <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#>
+
+SELECT DISTINCT ?uriCont ?id ?title
+WHERE { ?uriCont a callejero:Via.
+  OPTIONAL{ ?uriCont dcterms:identifier ?id}.
+  OPTIONAL{ ?uriCont rdfs:label ?title}.
+}
+
+
+#Listado de los portales que perteneces a una Junta
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX callejero: <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#>
+PREFIX territorio: <http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#>
+
+SELECT DISTINCT ?uriCont ?calle ?title ?idJunta ?titleJunta
+WHERE { ?uriCont a callejero:Portal.
+  ?uriCont callejero:via ?calle.
+  OPTIONAL{ ?calle dcterms:identifier ?id}.
+  OPTIONAL{ ?calle rdfs:label ?title}.
+  ?uriCont territorio:juntaAdministrativa ?junta
+  OPTIONAL{ ?junta dcterms:identifier ?idJunta}.
+  OPTIONAL{ ?junta rdfs:label ?titleJunta}.
+}
+LIMIT 500
+
+
+#Listado de 500 calles con su mapeo semántico
+
+PREFIX mapeo:<http://www.zaragoza.es/def/urbanismo-infraestructuras/mapeo-semantico-calle#>
+select distinct ?calle ?title ?destino where {
+
+?mapeo a mapeo:Mapping.
+?mapeo mapeo:origin ?calle.
+?calle rdfs:label ?title.
+?mapeo mapeo:destination ?destino.
+
+} LIMIT 500
