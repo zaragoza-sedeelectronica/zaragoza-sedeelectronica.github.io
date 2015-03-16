@@ -1,0 +1,18 @@
+PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX s: <http://schema.org/>
+PREFIX pc: <http://purl.org/procurement/public-contracts#>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?licitador 
+WHERE {
+  ?contrato a pproc:Contract;
+  pc:contractingAuthority/dcterms:title ?entidad;
+  a ?type;pproc:contractProcedureSpecifications ?speci;
+  pc:tender ?tender.
+  ?tender pc:supplier ?supplier.
+  ?supplier s:name ?licitador.
+  OPTIONAL{?speci pproc:tenderDeadline ?fecha}.
+  OPTIONAL{?speci pproc:notice/pproc:noticeDate ?fecha2}.
+  FILTER ( (regex(?fecha, "2014")) OR (regex(?fecha2, "2014"))) 
+} GROUP BY (?licitador)
