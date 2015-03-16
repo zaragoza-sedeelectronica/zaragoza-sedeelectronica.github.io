@@ -19,7 +19,7 @@ ORDER BY ASC(?distancia)
 
 #Tipos de alojamientos	
 PREFIX tur:<http://vocab.linkeddata.es/kos/turismo/>
-PREFIX alo:<http://vocab.linkeddata.es/datosabiertos/def/turismo/alojamiento>
+PREFIX alo:<http://vocab.linkeddata.es/datosabiertos/def/turismo/alojamiento#>
 SELECT DISTINCT ?categoria 
 WHERE {
         ?uriCont a tur:alojamiento;
@@ -43,8 +43,8 @@ PREFIX v: <http://www.w3.org/2006/vcard/ns#>
 PREFIX lug: <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#>
 PREFIX alo: <http://vocab.linkeddata.es/datosabiertos/def/turismo/alojamiento#>
 PREFIX s: <http://schema.org/>
-SELECT distinct ?uri ?title ?latitud ?longitud ?modified ?tel ?fax ?comment ?accesibilidad ?numCamas 
-		?numHabitaciones ?streetAdr ?addressLocality ?postCode ?email ?categoria ?logo ?photo ?url
+SELECT distinct ?uri str(?title) as ?title ?latitud ?longitud ?modified str(?tel) as ?tel ?fax str(?comment) as ?comment ?accesibilidad ?numCamas 
+		?numHabitaciones ?streetAdr str(?addressLocality) as ?addressLocality str(?postCode) as ?postCode str(?email) as ?email ?categoria ?logo ?photo ?url
 WHERE { 
 	?uri a <http://vocab.linkeddata.es/kos/turismo/alojamiento>.
 	OPTIONAL {?uri rdfs:label  ?title.}
