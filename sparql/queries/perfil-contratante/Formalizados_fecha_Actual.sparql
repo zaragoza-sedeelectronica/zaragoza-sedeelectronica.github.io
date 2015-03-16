@@ -1,0 +1,11 @@
+PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX s: <http://schema.org/>
+PREFIX pc: <http://purl.org/procurement/public-contracts#>
+
+SELECT DISTINCT ?uriCont ?formalizedDate 
+WHERE {
+  ?uriCont a pproc:Contract;
+  pc:tender ?tender.
+  ?tender pproc:formalizedDate ?formalizedDate 
+  FILTER (( ?formalizedDate < now() ) AND (?formalizedDate > "2011-11-11"^^xsd:date))
+}
