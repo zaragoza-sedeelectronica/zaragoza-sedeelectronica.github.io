@@ -1,0 +1,11 @@
+#Listado de plazas abiertas
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX emp: <http://purl.org/ctic/empleo/oferta#>
+
+select ?uri ?title ?plazasTotal where {
+  ?uri a emp:OfertaEmpleo .
+  ?uri rdfs:label ?title.
+  ?uri emp:plazasTotal ?plazasTotal .
+  ?uri emp:estado ?faceta FILTER regex(?faceta, "Abierto").
+}
