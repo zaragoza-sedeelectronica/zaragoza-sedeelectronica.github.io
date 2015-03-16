@@ -1,0 +1,31 @@
+#Listado de formatos según su tipo
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+SELECT ?format count(?format)
+WHERE {
+  ?uri a dcat:Dataset.
+  ?uri dcat:format/dcat:format ?format.
+} group by ?format
+
+
+#Datasets según su temática
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+SELECT ?tema count(?tema)
+WHERE {
+  ?uri a dcat:Dataset.
+  ?uri dcat:theme/dcterms:title ?tema.
+} group by ?tema
+
+
+#Datasets con sus temáticas
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+SELECT DISTINCT ?uri ?title (group_concat(distinct ?tipo;separator=",")) as ?tipo
+WHERE {
+  ?uri a dcat:Dataset.
+  ?uri dcterms:title ?title.
+  ?uri dcat:theme/dcterms:title ?tipo.
+}
+group by ?uri ?title
+order by ?title
