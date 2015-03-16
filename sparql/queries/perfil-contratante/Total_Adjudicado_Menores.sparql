@@ -1,0 +1,16 @@
+PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX pc: <http://purl.org/procurement/public-contracts#>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+
+SELECT SUM(distinct ?impAdjudicacionConIVA) as ?total 
+WHERE {
+  ?uriCont a pproc:Contract;
+  pproc:contractProcedureSpecifications ?procedureType;
+  pc:tender ?tender.
+  ?tender pproc:formalizedDate ?formalizedDate.
+  ?procedureType pproc:procedureType ?procedimiento.
+  ?tender pc:offeredPrice ?offeredPriceVAT.
+  ?offeredPriceVAT gr:hasCurrencyValue ?impAdjudicacionConIVA;
+  gr:valueAddedTaxIncluded "true"^^xsd:boolean.
+  FILTER (regex(?formalizedDate, "2014") AND (?procedimiento = pproc:Minor ) )
+}
