@@ -1,0 +1,11 @@
+PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX s: <http://schema.org/>
+
+SELECT COUNT DISTINCT ?uriCont 
+WHERE {
+  ?uriCont a pproc:Contract;
+  pproc:contractObject ?contObj.
+  ?contObj pproc:provision ?provision.
+  ?provision s:name ?name
+  FILTER regex(?name, "MANTENIMIENTO", "i")
+}
