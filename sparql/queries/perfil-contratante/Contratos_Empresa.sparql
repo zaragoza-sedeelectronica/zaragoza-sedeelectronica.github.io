@@ -1,0 +1,35 @@
+PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX s: <http://schema.org/>
+PREFIX pc: <http://purl.org/procurement/public-contracts#>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?contrato  ?nombreContrato ?formalizedDate ?impAdjudicacionConIVA ?adjudicatario ?numLicitadores 
+WHERE{
+        {
+        SELECT DISTINCT ?contrato  ?nombreContrato ?formalizedDate ?impAdjudicacionConIVA ?adjudicatario 
+          WHERE {
+            ?contrato a pproc:Contract;
+            a ?type;
+            dcterms:title ?nombreContrato;
+            pc:tender ?tender.
+            ?tender a pproc:FormalizedTender;
+            pproc:formalizedDate ?formalizedDate;
+            pc:supplier ?supplier.
+            ?supplier s:name ?adjudicatario.
+            ?tender pc:offeredPrice ?offeredPriceVAT.
+            ?offeredPriceVAT gr:hasCurrencyValue ?impAdjudicacionConIVA;
+            gr:valueAddedTaxIncluded "true"^^xsd:boolean.
+            FILTER (regex(?adjudicatario, "xxx"))
+          }
+        }
+        {
+        SELECT DISTINCT ?contrato count(?tender) AS ?numLicitadores 
+          WHERE {
+            ?contrato a pproc:Contract;
+            a ?type;
+            pc:tender ?tender.
+          } 
+          GROUP BY ?contrato
+        }
+}
