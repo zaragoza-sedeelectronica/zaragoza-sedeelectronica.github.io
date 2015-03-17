@@ -4,7 +4,7 @@ Aquí puedes consultar:
   * [Consultas de ejemplo](http://zaragoza-sedeelectronica.github.io/api/queries/). 
   * Ejemplos de uso:
       * [Monumentos](http://zaragoza-sedeelectronica.github.io/api/ejemplos/monumentos.html). 
-      * [POIs](http://zaragoza-sedeelectronica.github.io/api/ejemplos/pois.html). 
+      * [Restaurantes](http://zaragoza-sedeelectronica.github.io/api/ejemplos/restaurantes.html). 
 * Punto SPARQL Zaragoza:
   * [Consultas de ejemplo](http://zaragoza-sedeelectronica.github.io/sparql/queries/). 
   * Ejemplos de uso:
