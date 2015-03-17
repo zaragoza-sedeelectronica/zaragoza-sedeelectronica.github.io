@@ -21,7 +21,7 @@
     <script src="../../js/capas.js"></script>
     <script type="text/javascript">
     var SPARQL_ENDPOINT = 'http://datos.zaragoza.es/sparql';
-    var query = 'SELECT DISTINCT (group_concat(distinct ?type;separator=",")) as ?type ?uri ?title ?description ?latitud ?longitud  WHERE \
+    var query = 'SELECT DISTINCT (group_concat(distinct ?type;separator=",")) as ?type ?uri ?title ?description ?latitud ?longitud (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?longitud, ?latitud)))AS ?distancia) WHERE \
         {\
             ?monum geo:geometry ?geoMonum .\
             FILTER(?monum=<http://www.zaragoza.es/api/recurso/turismo/monumento/32>).\
@@ -35,7 +35,8 @@
             ?geo geo:long ?longitud .\
             FILTER(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?longitud, ?latitud))<0.3)\
         }\
-        ORDER BY ASC(?distancia)';
+        ORDER BY ASC(?distancia)\
+        LIMIT 200';
 
 
     $.getJSON(SPARQL_ENDPOINT + '?query=' + encodeURIComponent(query) + '&format=application%2Fsparql-results%2Bjson&timeout=0', function(data) {
