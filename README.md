@@ -12,4 +12,5 @@ Aquí puedes consultar:
       * [POIs](http://zaragoza-sedeelectronica.github.io/sparql/ejemplos/pois.html). 
 * SOLR:
   * [Consultas de ejemplo](http://zaragoza-sedeelectronica.github.io/solr/queries/). 
-  * [Ejemplos de uso](https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/tree/master/solr/ejemplos). 
+  * [Ejemplos de uso](http://zaragoza-sedeelectronica.github.io/solr/ejemplos/monumentos.html). 
+
