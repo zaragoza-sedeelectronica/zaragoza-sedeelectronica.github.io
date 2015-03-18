@@ -14,33 +14,33 @@
 </head>
 
 <body>
-<div class="container">
-<div class="row">
-    <img class="pull-right" src="http://www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto.png" alt="Ayuntamiento de Zaragoza" />
-    <h2>Monumentos</h2>
-
-    <div id="mapa-leaflet" style="height:30em"></div>
-    <p><a href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/api/ejemplos/monumentos.html">Ver código fuente</a></p>
-
-    <script src="../../js/jquery-1.10.2.min.js"></script>
-    <script src="../../js/capas.js"></script>
-    <script type="text/javascript">
-    $.getJSON("http://www.zaragoza.es/api/recurso/turismo/monumento.geojson?srsname=wgs84&rows=2000&fl=id,title,description,geometry", function(data) {
-        var geojson = L.geoJson(data, {
-            onEachFeature: function(feature, layer) {
-                var txt;
-                txt = '<strong>' + feature.properties.title + '</strong><br/>' + feature.properties.description;
-                layer.bindPopup(txt);
-            }
-        });
-
-        map.fitBounds(geojson.getBounds());
-        markers = L.markerClusterGroup();
-        markers.addLayer(geojson);
-        map.addLayer(markers);
-    });
-    </script>
-    </div>
+    <div class="container">
+        <div class="row">
+            <img class="pull-right" src="http://www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto.png" alt="Ayuntamiento de Zaragoza" />
+            <h2>Monumentos</h2>
+        
+            <div id="mapa-leaflet" style="height:30em"></div>
+            <p><a href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/api/ejemplos/monumentos.html">Ver código fuente</a></p>
+        
+            <script src="../../js/jquery-1.10.2.min.js"></script>
+            <script src="../../js/capas.js"></script>
+            <script type="text/javascript">
+            $.getJSON("http://www.zaragoza.es/api/recurso/turismo/monumento.geojson?srsname=wgs84&rows=2000&fl=id,title,description,geometry", function(data) {
+                var geojson = L.geoJson(data, {
+                    onEachFeature: function(feature, layer) {
+                        var txt;
+                        txt = '<strong>' + feature.properties.title + '</strong><br/>' + feature.properties.description;
+                        layer.bindPopup(txt);
+                    }
+                });
+        
+                map.fitBounds(geojson.getBounds());
+                markers = L.markerClusterGroup();
+                markers.addLayer(geojson);
+                map.addLayer(markers);
+            });
+            </script>
+        </div>
     </div>
 </body>
 
