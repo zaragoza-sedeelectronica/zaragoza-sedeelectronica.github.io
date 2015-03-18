@@ -3,6 +3,7 @@
 
 <head>
     <title>Monumentos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style type="text/css">
     #resultados {
         width: 75%;
@@ -12,71 +13,76 @@
         width: 25%;
         float: right;
     }
+    .boton{margin-top:1em;}
     </style>
 </head>
 
 <body>
-    <h2>Monumentos</h2>
-    <p>B&uacute;squeda facetada de monumentos por el campo <strong>estilo_smultiple</strong>
-    </p>
-    <p><a href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/solr/ejemplos/monumentos.html">Ver código fuente</a></p>
-    <div id="resultados">
-        <ul></ul>
-    </div>
-    <div id="facetas">
-        <ul></ul>
-    </div>
-    <script src="../../js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript">
-    var SOLR_ENDPOINT = 'http://www.zaragoza.es/buscador/select?';
-    var query = '*:*';
-    var start = 0;
-    var rows = 1000;
-    var facet = 'estilos_smultiple';
-    var category = '("Monumentos")';
-
-    mostrar(""); // Por defecto mostramos sin ningún filtro de faceta
-
-    function mostrar(fq) {
-        if (fq !== "") {
-            fq = '"' + fq + '"';
-        }
-        $.ajax({
-            method: 'JSONP',
-            url: SOLR_ENDPOINT,
-            dataType: "jsonp",
-            data: {
-                'json.wrf': 'JSON_CALLBACK',
-                'wt': 'json',
-                'start': start || 0,
-                'rows': rows || 100,
-                'facet': 'true',
-                'facet.field': facet,
-                'facet.mincount': 1,
-                'fl': 'uri,title,id,texto_t,x_coordinate,y_coordinate,last_modified,temas_smultiple',
-                'q': query + ' AND -tipocontenido_s:estatico AND category:' + category,
-                'fq': fq
+    <div class="container">
+        <div class="row">
+            <h2>Monumentos</h2>
+            <p>B&uacute;squeda facetada de monumentos por el campo <strong>estilo_smultiple</strong>
+            </p>
+            <p class="boton"><a class="btn btn-default" role="button" href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/solr/ejemplos/monumentos.html">Ver código fuente</a></p>
+            <div id="resultados">
+                <ul></ul>
+            </div>
+            <div id="facetas">
+                <ul></ul>
+            </div>
+            <script src="../../js/jquery-1.10.2.min.js"></script>
+            <script type="text/javascript">
+            var SOLR_ENDPOINT = 'http://www.zaragoza.es/buscador/select?';
+            var query = '*:*';
+            var start = 0;
+            var rows = 1000;
+            var facet = 'estilos_smultiple';
+            var category = '("Monumentos")';
+        
+            mostrar(""); // Por defecto mostramos sin ningún filtro de faceta
+        
+            function mostrar(fq) {
+                if (fq !== "") {
+                    fq = '"' + fq + '"';
+                }
+                $.ajax({
+                    method: 'JSONP',
+                    url: SOLR_ENDPOINT,
+                    dataType: "jsonp",
+                    data: {
+                        'json.wrf': 'JSON_CALLBACK',
+                        'wt': 'json',
+                        'start': start || 0,
+                        'rows': rows || 100,
+                        'facet': 'true',
+                        'facet.field': facet,
+                        'facet.mincount': 1,
+                        'fl': 'uri,title,id,texto_t,x_coordinate,y_coordinate,last_modified,temas_smultiple',
+                        'q': query + ' AND -tipocontenido_s:estatico AND category:' + category,
+                        'fq': fq
+                    }
+                });
             }
-        });
-    }
-
-    function JSON_CALLBACK(respuesta) {
-        var obj;
-        $("#resultados ul").empty();
-        for (var i = 0; i < respuesta.response.docs.length; i++) {
-            obj = respuesta.response.docs[i];
-            $("#resultados ul").append('<li>' + obj.title + '</li>');
-        }
-        $("#facetas ul").empty();
-        for (var i = 0; i < respuesta.facet_counts.facet_fields[facet].length; i++) {
-            respuesta.facet_counts.facet_fields[facet][i];
-            var txt = '<button onclick="mostrar(\'' + respuesta.facet_counts.facet_fields[facet][i] + '\')">' + respuesta.facet_counts.facet_fields[facet][i] + '</button>';
-            i = i + 1;
-            txt = txt + '(' + respuesta.facet_counts.facet_fields[facet][i] + ')';
-            $("#facetas ul").append('<li>' + txt + '</li>');
-        }
-    }
-    </script>
+        
+            function JSON_CALLBACK(respuesta) {
+                var obj;
+                $("#resultados ul").empty();
+                for (var i = 0; i < respuesta.response.docs.length; i++) {
+                    obj = respuesta.response.docs[i];
+                    $("#resultados ul").append('<li>' + obj.title + '</li>');
+                }
+                $("#facetas ul").empty();
+                for (var i = 0; i < respuesta.facet_counts.facet_fields[facet].length; i++) {
+                    respuesta.facet_counts.facet_fields[facet][i];
+                    var txt = '<button onclick="mostrar(\'' + respuesta.facet_counts.facet_fields[facet][i] + '\')">' + respuesta.facet_counts.facet_fields[facet][i] + '</button>';
+                    i = i + 1;
+                    txt = txt + '(' + respuesta.facet_counts.facet_fields[facet][i] + ')';
+                    $("#facetas ul").append('<li>' + txt + '</li>');
+                }
+            }
+            </script>
+        </div>
+    </div>
 </body>
 
 </html>
