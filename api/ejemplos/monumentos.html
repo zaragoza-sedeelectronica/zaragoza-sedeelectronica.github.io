@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="../../css/leaflet.css" />
     <link rel="stylesheet" href="../../css/MarkerCluster.css" />
     <link rel="stylesheet" href="../../css/MarkerCluster.Default.css" />
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="../../js/leaflet.js"></script>
     <script src="../../js/leaflet.ajax.min.js"></script>
     <script src="../../js/leaflet.markercluster.js"></script>
 </head>
 
 <body>
+<div class="container">
+<div class="row">
+    <img class="pull-right" src="http://www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto.png" alt="Ayuntamiento de Zaragoza" />
     <h2>Monumentos</h2>
 
     <div id="mapa-leaflet" style="height:30em"></div>
@@ -37,6 +40,8 @@
         map.addLayer(markers);
     });
     </script>
+    </div>
+    </div>
 </body>
 
 </html>
