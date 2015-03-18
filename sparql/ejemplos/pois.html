@@ -7,56 +7,62 @@
     <link rel="stylesheet" href="../../css/leaflet.css" />
     <link rel="stylesheet" href="../../css/MarkerCluster.css" />
     <link rel="stylesheet" href="../../css/MarkerCluster.Default.css" />
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    
     <script src="../../js/leaflet.js"></script>
     <script src="../../js/leaflet.ajax.min.js"></script>
     <script src="../../js/leaflet.markercluster.js"></script>
 </head>
 
 <body>
-    <h2>Recursos cercanos a la bas&iacute;lica del Pilar</h2>
-
-    <div id="mapa-leaflet" style="height:30em"></div>
-    <p><a href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/sparql/ejemplos/pois.html">Ver código fuente</a></p>
-
-    <script src="../../js/jquery-1.10.2.min.js"></script>
-    <script src="../../js/capas.js"></script>
-    <script type="text/javascript">
-    var SPARQL_ENDPOINT = 'http://datos.zaragoza.es/sparql';
-    var query = 'SELECT DISTINCT (group_concat(distinct ?type;separator=",")) as ?type ?uri ?title ?description ?latitud ?longitud (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?longitud, ?latitud)))AS ?distancia) WHERE \
-        {\
-            ?monum geo:geometry ?geoMonum .\
-            FILTER(?monum=<http://www.zaragoza.es/api/recurso/turismo/monumento/32>).\
-            ?geoMonum geo:lat ?latM;\
-            geo:long ?lngM .\
-            ?uri a ?type.\
-            ?uri rdfs:label ?title.\
-            optional{?uri rdfs:comment ?description.}\
-            ?uri geo:geometry ?geo .\
-            ?geo geo:lat ?latitud.\
-            ?geo geo:long ?longitud .\
-            FILTER(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?longitud, ?latitud))<0.3)\
-        }\
-        ORDER BY ASC(?distancia)\
-        LIMIT 200';
-
-
-    $.getJSON(SPARQL_ENDPOINT + '?query=' + encodeURIComponent(query) + '&format=application%2Fsparql-results%2Bjson&timeout=0', function(data) {
-        var geojson = L.layerGroup();
-        var feature;
-        for (var i = 0; i < data.results.bindings.length; i++) {
-            feature = data.results.bindings[i];
-            marker = new L.marker([feature.latitud.value, feature.longitud.value])
-                .bindPopup('<strong>' + feature.title.value + '</strong><br/>' + feature.type.value + '<br/>' + (feature.description ? feature.description.value : ''))
-                .addTo(geojson);
-        }
-
-        markers = L.markerClusterGroup();
-        markers.addLayer(geojson);
-        map.fitBounds(markers.getBounds());
-        map.addLayer(markers);
-    });
-    </script>
+<div class="container">
+    <div class="row">
+        <img class="pull-right" src="http://www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto.png" alt="Ayuntamiento de Zaragoza" />
+            <h2>Recursos cercanos a la bas&iacute;lica del Pilar</h2>
+        
+            <div id="mapa-leaflet" style="height:30em"></div>
+            <p><a href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/sparql/ejemplos/pois.html">Ver código fuente</a></p>
+        
+            <script src="../../js/jquery-1.10.2.min.js"></script>
+            <script src="../../js/capas.js"></script>
+            <script type="text/javascript">
+            var SPARQL_ENDPOINT = 'http://datos.zaragoza.es/sparql';
+            var query = 'SELECT DISTINCT (group_concat(distinct ?type;separator=",")) as ?type ?uri ?title ?description ?latitud ?longitud (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?longitud, ?latitud)))AS ?distancia) WHERE \
+                {\
+                    ?monum geo:geometry ?geoMonum .\
+                    FILTER(?monum=<http://www.zaragoza.es/api/recurso/turismo/monumento/32>).\
+                    ?geoMonum geo:lat ?latM;\
+                    geo:long ?lngM .\
+                    ?uri a ?type.\
+                    ?uri rdfs:label ?title.\
+                    optional{?uri rdfs:comment ?description.}\
+                    ?uri geo:geometry ?geo .\
+                    ?geo geo:lat ?latitud.\
+                    ?geo geo:long ?longitud .\
+                    FILTER(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?longitud, ?latitud))<0.3)\
+                }\
+                ORDER BY ASC(?distancia)\
+                LIMIT 200';
+        
+        
+            $.getJSON(SPARQL_ENDPOINT + '?query=' + encodeURIComponent(query) + '&format=application%2Fsparql-results%2Bjson&timeout=0', function(data) {
+                var geojson = L.layerGroup();
+                var feature;
+                for (var i = 0; i < data.results.bindings.length; i++) {
+                    feature = data.results.bindings[i];
+                    marker = new L.marker([feature.latitud.value, feature.longitud.value])
+                        .bindPopup('<strong>' + feature.title.value + '</strong><br/>' + feature.type.value + '<br/>' + (feature.description ? feature.description.value : ''))
+                        .addTo(geojson);
+                }
+        
+                markers = L.markerClusterGroup();
+                markers.addLayer(geojson);
+                map.fitBounds(markers.getBounds());
+                map.addLayer(markers);
+            });
+            </script>
+        </div>
+    </div>
 </body>
 
 </html>
