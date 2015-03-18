@@ -41,18 +41,17 @@ order by ?magnitud ?estacion ?fecha
 #Obtención de las propiedades de una estación
 
 PREFIX ssn:<http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/meteorologia#>
-PREFIX ssnext:<http://www.w3.org/2000/01/rdf-schema#>
-PREFIX dul:<http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/calidad-aire#>
+PREFIX esairq:<http://vocab.linkeddata.es/datosabiertos/def/medio-ambiente/calidad-aire#>
 PREFIX loc:<http://www.w3.org/ns/locn#>
 PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>
 select distinct ?label ?distancia ?via ?trafico ?zona ?address ?geo
 where {
   ?uri a ssn:Estacion;
-  ssnext:label ?label;
-  dul:distanciaObstaculos ?distancia;
-  dul:distanciaVia ?via;
-  dul:trafico ?trafico;
-  dul:zona ?zona;
+  rdfs:label ?label;
+  esairq:distanciaObstaculos ?distancia;
+  esairq:distanciaVia ?via;
+  esairq:trafico ?trafico;
+  esairq:zona ?zona;
   loc:address ?address;
   geo:geometry ?geo
 } 
