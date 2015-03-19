@@ -1,5 +1,5 @@
 #
-#	Cátalogo de conjunto de datos: restaurantes
+#	Cátalogo de conjunto de datos: Restaurantes
 #	Directorio de restaurantes en la ciudad de Zaragoza
 #	Enlace de acceso: http://www.zaragoza.es/docs-api/#!/restaurante
 #	Licencia: http://www.zaragoza.es/ciudad/servicios/avisolegal.htm#condiciones

@@ -1,0 +1,45 @@
+#
+#	Cátalogo de conjunto de datos: Agenda
+#	Listado de actividades y eventos sobre cultura, ocio, música, deporte, teatro, cine, exposiciones, medio ambiente, fiestas locales, cursos formativos y otros, que se realizan en la ciudad de Zaragoza, dirigidas al conjunto de la población en general.
+#	Los equipamientos están analizados por la Fundación Disminuidos Físicos de Aragón.
+#		Fuente de información:
+#			- Entidades Ciudadanas
+#			- Centros Cívicos
+#			- Centro de Historia
+#			- Casa de la Mujer
+#			- Servicio de Cultura
+#			- Agencia de Medio Ambiente y Sostenibilidad
+#			- Bibliotecas Municipales
+#			- Bomberos y Protección Civil
+#	Enlace de acceso: http://www.zaragoza.es/docs-api/#!/evento-zaragoza
+#	Licencia: http://www.zaragoza.es/ciudad/servicios/avisolegal.htm#condiciones
+#
+
+# [1] 50 primeros eventos en json y srs en utm30 (por defecto)
+http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.json
+
+# [2] 50 primeros eventos que coinciden con la clave 'taller*' en su título en formato XML
+http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.xml?q=title==Taller*
+
+# [3] 50 primeros evento en el rango de fecha (01-03-2015 - 31-03-2015) en json
+http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.json?start=0&rows=50&q=startDate=ge=2015-03-01T00:00:00Z;endDate=le=2015-03-31T00:00:00Z"
+
+# [4] Últimos 100 eventos con modificaciones en orden descendente en una fecha concreta (ejemplo: día de hoy) en json
+http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.json?rows=100&sort=lastUpdated desc&q=lastUpdated=lt=2015-03-18T00:00:00Z
+
+# [5] Últimos eventos orientados a jóvenes en csv
+http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.csv?&sort=startDate desc&q=poblacion.id==2
+
+# [6] Últimos eventos cuyo subtema es "Competiciones y Exhibiciones" en geojson
+http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.geojson?sort=startDate desc&q=subtemas.id==8
+
+# [7] Título, descripción, fotografía y fechas de los últimos eventos con entrada libre en xml
+http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.xml?fl=title,description%,image,startDate,endDate,tipoEntrada&sort=startDate desc&q=tipoEntrada==libre
+
+
+
+
+
+
+
+

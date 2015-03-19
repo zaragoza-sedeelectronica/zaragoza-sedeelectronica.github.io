@@ -1,5 +1,5 @@
 #
-#	Cátalogo de conjunto de datos: alojamientos
+#	Cátalogo de conjunto de datos: Alojamientos
 #	Guía de alojamientos en Zaragoza: hoteles, hostales, pensiones, apartamentos, albergues y campings.
 #	Enlace de acceso: http://www.zaragoza.es/docs-api/#!/alojamiento
 #	Licencia: http://www.zaragoza.es/ciudad/servicios/avisolegal.htm#condiciones
