@@ -1,5 +1,5 @@
 #Aparcabicis próximos en un radio de 1 km con respecto a la Basilica del Pilar
-modificando el equipamiento se puede obtener para los distintos equipamientos de Zaragoza en esta misma consulta:
+modificando el equipamiento se puede obtener para los distintos equipamientos de Zaragoza esta misma consulta:
 http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#ParadaTaxi
 http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#Parquimetro
 http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#AccesoAparcamiento
@@ -27,7 +27,7 @@ where  {
 ORDER BY ASC(?distancia)
 
 #Listado de 100 aparcamientos para Bicicleta con sus coordenadas
-al igual que en la consulta anterior si se cambia el equipamiento se puede obtener esta información para las diferentes equipamientos
+al igual que en la consulta anterior si se cambia el equipamiento se puede obtener esta información para los diferentes equipamientos
 PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>
 select distinct ?uriCont str(?nombre)as ?nombre ?latitud ?longitud
 where  {
