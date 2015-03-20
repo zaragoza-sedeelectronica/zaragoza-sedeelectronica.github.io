@@ -1,0 +1,41 @@
+#Aparcabicis próximos en un radio de 1 km con respecto a la Basilica del Pilar
+modificando el equipamiento se puede obtener para los distintos equipamientos de Zaragoza en esta misma consulta:
+http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#ParadaTaxi
+http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#Parquimetro
+http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#AccesoAparcamiento
+http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#AparcamientoPublico
+http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#AparcamientoPersonasDiscapacidad
+http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#AparcamientoMoto
+http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#EstacionServicio
+http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#AparcamientoBicicleta
+PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>
+select distinct ?uriCont str(?nombre)as ?nombre (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR)))AS ?distancia)
+where  {
+  ?monum geo:geometry ?geoMonum .
+  FILTER(?monum=<http://www.zaragoza.es/api/recurso/turismo/monumento/32>).
+  ?geoMonum geo:lat ?latM;
+  geo:long ?lngM .
+  ?uriCont a <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#AparcamientoBicicleta>;
+  rdfs:label ?nombre.
+  optional {
+  ?uriCont geo:geometry ?coordenadas. 
+  ?coordenadas geo:lat ?latR;
+  geo:long ?lngR.
+  }
+    FILTER(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR))<1) 
+}
+ORDER BY ASC(?distancia)
+
+#Listado de 100 aparcamientos para Bicicleta con sus coordenadas
+al igual que en la consulta anterior si se cambia el equipamiento se puede obtener esta información para las diferentes equipamientos
+PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>
+select distinct ?uriCont str(?nombre)as ?nombre ?latitud ?longitud
+where  {
+    ?uriCont a <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#AparcamientoBicicleta>;
+    rdfs:label ?nombre.
+    optional {
+      ?uriCont geo:geometry ?coordenadas. 
+      ?coordenadas geo:lat ?latitud;
+      geo:long ?longitud.
+    } 
+}LIMIT 100
