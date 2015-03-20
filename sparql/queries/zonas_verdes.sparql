@@ -1,0 +1,42 @@
+# Todas las zonas verdes de la Ciudad
+PREFIX eq:<http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#>
+PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX v:<http://www.w3.org/2006/vcard/ns#>
+PREFIX dul: <http://www.loa-cnr.it/ontologies/DUL.owl#>
+select distinct ?uriCont str(?nombre) as ?nombre ?bar ?cesped str(?beber)as ?fuentes_beber str(?infantiles) as ?infantiles str(?monu) as ?monu str(?petanca) as ?petanca str(?superficie) as ?superficie str(?fuentes) as ?fuentes_ornamentales str(?deportivas) as ?instalaciones_deportivas str(?kiosko) as ?kiosko_bar ?latitud ?longitud
+where  {
+    ?uriCont a <http://www.zaragoza.es/api/kos/medio-ambiente/parques-y-jardines>;
+    rdfs:label ?nombre.
+    optional{ ?uriCont   eq:kiosko_bar/dul:hasDataValue ?bar.}
+    optional{?uriCont eq:cesped/dul:hasDataValue ?cesped.}
+    optional{?uriCont eq:fuentes_beber/dul:hasDataValue ?beber.}
+    optional{?uriCont eq:juegos_infantiles/dul:hasDataValue ?infantiles.}
+    optional {?uriCont eq:monumentos/dul:hasDataValue ?monu.}
+    optional {?uriCont eq:petanca/dul:hasDataValue ?petanca.}
+    optional{?uriCont eq:superficie/dul:hasDataValue ?superficie.}
+    optional{?uriCont eq:fuentes_orna/dul:hasDataValue ?fuentes.}
+    optional{?uriCont eq:inst_deportivas/dul:hasDataValue ?deportivas}
+    optional{?uriCont eq:kiosco_bar/dul:hasDataValue ?kiosko.}
+    optional {
+        ?uriCont geo:geometry ?coordenadas. 
+            ?coordenadas geo:lat ?latitud;
+            geo:long ?longitud.
+    } 
+}
+#Zonas Verdes que tienen juegos infantiles
+Prefix eq:<http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#>
+PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX v:<http://www.w3.org/2006/vcard/ns#>
+PREFIX dul: <http://www.loa-cnr.it/ontologies/DUL.owl#>
+select distinct ?uriCont ?nombre 
+where  {
+        ?uriCont a <http://www.zaragoza.es/api/kos/medio-ambiente/parques-y-jardines>;
+        rdfs:label ?nombre;
+        eq:juegos_infantiles/dul:hasDataValue "true"^^xsd:boolean.
+        optional {
+        ?uriCont geo:geometry ?coordenadas. 
+            ?coordenadas geo:lat ?latR;
+            geo:long ?lngR.
+    } 
+
+}
