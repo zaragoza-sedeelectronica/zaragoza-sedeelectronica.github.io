@@ -17,16 +17,16 @@
         <div class="row">
             <div class="col-md-12">
                 <img class="pull-right" src="http://www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto.png" alt="Ayuntamiento de Zaragoza" />
-                <h1>Cat醠ogo de conjuntos de datos API Zaragoza</h1>
-                <p>Descripci髇 de los conjunto de datos y geolocalizaci髇 en los conjuntos disponibles.<p>
+                <h1>Cat谩logo de conjuntos de datos API Zaragoza</h1>
+                <p>Descripci贸n de los conjunto de datos y geolocalizaci贸n de registros seg煤n su disponibilidad.<p>
                 <select class="form-control" ng-model="uri" ng-options="item.path as item.description for item in myData.apis" ng-change="getDataset(uri)">
-                    <option value="" disabled selected>Selecciona un cat醠ogo</option>
+                    <option value="" disabled selected>Selecciona un cat谩logo</option>
                 </select>
                 <br/>
                 <pre style="height:20em;overflow: overflow-y" ng-show="uri != undefined">{{myData.conjunto | json}}</pre>
                 <leaflet ng-show="mostrarMapa" id="mapa" center="center" markers="markers" height="500px" style="width:100%" layers="layers" geojson="geojson"></leaflet>
                 <div class="alert alert-warning" ng-show="mostrarWarning">Este conjunto de datos no dispone de datos geolocalizados</div>
-                <p><a class="btn btn-default" role="button" href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/api/ejemplos/datasetsGeolocalizados.html">Ver c骴igo fuente</a></p>
+                <p><a class="btn btn-default" role="button" href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/api/ejemplos/datasetsGeolocalizados.html">Ver c贸digo fuente</a></p>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
                 $scope.myData.apis = data.apis;
             }).
             error(function(data, status, headers, config) {
-                alert("Error en petici髇 al cat醠ogo");
+                alert("Error en petici贸n al cat谩logo");
             });
 
             $scope.getDataset = function(uri) {
@@ -57,7 +57,7 @@
                     checkGeometry(data);
                 }).
                 error(function(data, status, headers, config) {
-                    alert("Error en petici髇 a la descripci髇 del conjunto de datos: " + uri);
+                    alert("Error en petici贸n a la descripci贸n del conjunto de datos: " + uri);
                 });
             };
 
