@@ -5,6 +5,7 @@
   * Ejemplos de uso:
     * [Monumentos](http://zaragoza-sedeelectronica.github.io/api/ejemplos/monumentos.html).
     * [Restaurantes](http://zaragoza-sedeelectronica.github.io/api/ejemplos/restaurantes.html).
+    * [Catálogo API Zaragoza](http://zaragoza-sedeelectronica.github.io/api/ejemplos/catalogo.html).
 * Punto SPARQL Zaragoza:
   * [Consultas de ejemplo](http://zaragoza-sedeelectronica.github.io/sparql/queries/). 
   * Ejemplos de uso:
