@@ -15,9 +15,9 @@ WHERE { ?uri a acto:Evento.
 #Actividades cercanas a un monumento (ej. id=32)
 
 PREFIX acto: <http://vocab.linkeddata.es/datosabiertos/def/cultura-ocio/agenda#>
-SELECT DISTINCT ?uri ?title (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR)))AS ?distancia) WHERE
-{
-  ?monum geo:geometry ?geoMonum .
+SELECT DISTINCT ?uri ?title (bif:round(bif:st_distance(bif:st_point (?lngM, ?latM),bif:st_point (?lngR, ?latR)))AS ?distancia) 
+WHERE{
+   ?monum geo:geometry ?geoMonum .
   FILTER(?monum=<http://www.zaragoza.es/api/recurso/turismo/monumento/32>).
   ?geoMonum geo:lat ?latM;
   geo:long ?lngM .
@@ -52,4 +52,25 @@ SELECT DISTINCT ?uriCont ?id ?tema WHERE {
 ?uriCont a tema:evento-zaragoza;
    skos:notation ?id;
    skos:prefLabel ?tema.		
+}
+# listado de actividades con varios atributos
+PREFIX acto: <http://vocab.linkeddata.es/datosabiertos/def/cultura-ocio/agenda#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+SELECT DISTINCT ?uri str(?title) as ?titulo (group_concat(distinct ?categoria;separator=",")) as ?tema ?participantes 
+?entrada ?programa ?accesible ?barreras ?festividad ?latR ?lngR  
+WHERE{
+  ?uri a acto:Evento;
+  dcterms:title ?title;
+  vcard:category/skos:prefLabel ?tema.
+  optional{?uri acto:numMaximoParticipantes ?participantes.}
+  optional{?uri acto:tipoEntrada ?entrada.}
+  optional{?uri acto:programa ?programa.}
+  optional{?uri acto:accesible ?accesible.}
+  optional{?uri acto:barrerasArquitectonicas ?barreras.}
+  optional{?uri acto:festividadLocal ?festividad.}
+  optional{?uri geo:geometry ?geo .
+          ?geo geo:lat ?latR.
+          ?geo geo:long ?lngR  .
+          }
 }
