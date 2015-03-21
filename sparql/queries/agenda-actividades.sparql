@@ -44,3 +44,12 @@ WHERE {
   ?uri s:subEvent ?subevent.
   ?subevent s:location rec:rec-4907.
 }
+
+
+# Listado de temas asociados a las actividades
+PREFIX tema: <http://vocab.linkeddata.es/kos/cultura-ocio/tema/>
+SELECT DISTINCT ?uriCont ?id ?tema WHERE {	
+?uriCont a tema:evento-zaragoza;
+   skos:notation ?id;
+   skos:prefLabel ?tema.		
+}
