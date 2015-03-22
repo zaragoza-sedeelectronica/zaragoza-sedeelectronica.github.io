@@ -17,3 +17,7 @@
 
 ## Contribuye
 Puedes contribuir a mejorar, o añadir nuevos ejemplos o consultas, para lo que deberías hacer un **fork** del repositorio y cuando tengas preparadas las contribuciones, un **pull request** con una descripción clara de las modificaciones realizadas.
+
+##Completa nuestro formulario
+
+https://docs.google.com/forms/d/1aeV2dkYEJji9kpzytvptjH0ZRSLF_XxsQ5usKmtE8tI/viewform?usp=send_form
