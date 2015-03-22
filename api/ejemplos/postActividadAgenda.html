@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
+<head>
+    <title>Agenda de actividades. POST</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src='../../js/hmac-sha1.js' type='text/javascript'></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <img class="pull-right" src="http://www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto.png" alt="Ayuntamiento de Zaragoza" />
+            <h1>Alta de actividad</h1>
+            <textarea name="bodyPeticion" id="bodyPeticion" rows="20" cols="100">{ "title": "texto de prueba", "novisible": "S", "web": "http://www.google.com", "description": "descripcion", "poblacion": [ { "id": 2 } ], "temas": [ { "id": 37 } ], "subEvent": [ { "lugar": { "id": "rec-916" }, "fechaInicio": "2015-12-31T00:00:00Z", "fechaFinal": "2015-12-31T00:00:00Z", "horaInicio": "09:00", "horaFinal": "10:00" } ] }
+            </textarea>
+            <script type="text/javascript">
+            var server = 'http://www.zaragoza.es';
+            var api = '/api/recurso/cultura-ocio/evento-zaragoza?debug=s';
+            var clientId = <clientId>;
+            var privateKey = <ClavePrivada>;
+
+            function ejecutar() {
+
+                var bodyPeticion= $("textarea#bodyPeticion").val();
+                $.ajax({
+                    contentType: 'application/json',
+                    data: bodyPeticion,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    },
+                    headers: {
+                        clientId: clientId,
+                        "HmacSHA1": CryptoJS.HmacSHA1(clientId + "POST" + api + bodyPeticion, privateKey, {
+                            asBytes: true
+                        }),
+                        Accept: "application/json",
+                        "Content-Type": "application/json;charset=UTF-8"
+                    },
+                    processData: false,
+                    type: 'POST',
+                    url: server + api
+                });
+            }
+            </script>
+            <button onclick="ejecutar()">Ejecutar</button>
+        </div>
+    </div>
+</body>
+
+</html>
