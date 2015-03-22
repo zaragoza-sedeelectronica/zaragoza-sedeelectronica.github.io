@@ -74,3 +74,32 @@ WHERE{
           ?geo geo:long ?lngR  .
           }
 }
+
+# 5 actividades destacadas ordenadas por orden con sus datos de horario
+PREFIX acto: <http://vocab.linkeddata.es/datosabiertos/def/cultura-ocio/agenda#> 
+PREFIX s: <http://schema.org/>
+PREFIX v: <http://www.w3.org/2006/vcard/ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ns: <http://www.w3.org/2006/vcard/ns#> 
+
+SELECT DISTINCT ?id ?title ?startDate ?endDate ?startTime ?endTime ?horario ?tipo ?latitud ?longitud
+WHERE { 
+	?uri a s:Event;
+	  dcterms:identifier ?id;
+		rdfs:label  ?title.               
+	OPTIONAL {?uri s:subEvent ?subEvent.} 
+	OPTIONAL {?subEvent s:startDate ?startDate.}               
+	OPTIONAL {?subEvent s:endDate ?endDate.}               
+	OPTIONAL {?subEvent s:startTime ?startTime.}               
+	OPTIONAL {?subEvent s:endTime ?endTime.}               
+	OPTIONAL {?subEvent s:openingHours ?horario.}                             
+	OPTIONAL {?uri skos:broader/skos:prefLabel  ?tema.}               
+	OPTIONAL {?uri ns:category/skos:prefLabel  ?subtema.}
+	OPTIONAL {?uri geo:geometry ?geo.
+		?geo geo:lat ?latitud.
+		?geo geo:long ?longitud.} 
+	?uri acto:destacada "true";
+		acto:orden ?orden.    
+	bind (CONCAT(?tema, " -> ", ?subtema) AS ?tipo)        
+} 
+ORDER BY ASC(?orden) LIMIT 5
