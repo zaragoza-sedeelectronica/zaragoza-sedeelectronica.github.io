@@ -99,7 +99,8 @@ WHERE {
 		?geo geo:lat ?latitud.
 		?geo geo:long ?longitud.} 
 	?uri acto:destacada "true";
-		acto:orden ?orden.    
+		acto:orden ?ordenInterno.    
+        bind (xsd:int(?ordenInterno) as ?orden)   
 	bind (CONCAT(?tema, " -> ", ?subtema) AS ?tipo)        
 } 
 ORDER BY ASC(?orden) LIMIT 5
