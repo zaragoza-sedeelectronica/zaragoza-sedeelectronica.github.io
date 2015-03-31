@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+
+<head>
+    <title>Procesión de Semana Santa</title>
+
+    <link rel="stylesheet" href="../../css/leaflet.css" />
+    <link rel="stylesheet" href="../../css/MarkerCluster.css" />
+    <link rel="stylesheet" href="../../css/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="../../js/leaflet.js"></script>
+    <script src="../../js/leaflet.ajax.min.js"></script>
+    <script src="../../js/leaflet.markercluster.js"></script>
+</head>
+
+<body
+<div class="container">
+<div class="row">
+ <img class="pull-right" src="http://www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto.png" alt="Ayuntamiento de Zaragoza" />
+    <h1>Detalle de Procesión</h1>
+    <div id="mapa-leaflet" style="height:30em"></div>
+    <p class="boton"><a class="btn btn-default" role="button" href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/api/ejemplos/procesion.html">Ver código fuente</a></p>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/capas.js"></script>
+    <script type="text/javascript">
+        $.getJSON("http://www.zaragoza.es/api/recurso/cultura-ocio/procesion/recorrido/32.json?srsname=wgs84", function(data) {
+            var geojson = L.geoJson(data).addTo(map);
+        });
+    </script>
+    </div>
+</div>
+</body>
+
+</html>
