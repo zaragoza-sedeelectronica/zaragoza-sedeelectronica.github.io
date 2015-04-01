@@ -26,6 +26,7 @@
     <script type="text/javascript">
         $.getJSON("http://www.zaragoza.es/api/recurso/cultura-ocio/procesion/recorrido/32.json?srsname=wgs84", function(data) {
             var geojson = L.geoJson(data).addTo(map);
+            map.fitBounds(geojson.getBounds());
         });
     </script>
     </div>

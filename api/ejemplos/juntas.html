@@ -26,7 +26,6 @@
 
                 onEachFeature: function(feature, layer) {
                     var txt = feature.properties.title + ' (id = ' + feature.properties.id + ')';
-                    console.log(feature);
                     layer.bindPopup(txt);
                 }
             }).addTo(map);
