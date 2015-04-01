@@ -6,6 +6,8 @@
     * [Monumentos](http://zaragoza-sedeelectronica.github.io/api/ejemplos/monumentos.html).
     * [Restaurantes](http://zaragoza-sedeelectronica.github.io/api/ejemplos/restaurantes.html).
     * [Catálogo API Zaragoza](http://zaragoza-sedeelectronica.github.io/api/ejemplos/catalogo.html).
+    * [Delimitación de Juntas Municipales y Vecinales](http://zaragoza-sedeelectronica.github.io/api/ejemplos/juntas.html).
+    * [Recorrido de una procesión de semana santa](http://zaragoza-sedeelectronica.github.io/api/ejemplos/procesion.html).
 * Punto SPARQL Zaragoza:
   * [Consultas de ejemplo](http://zaragoza-sedeelectronica.github.io/sparql/queries/). 
   * Ejemplos de uso:
