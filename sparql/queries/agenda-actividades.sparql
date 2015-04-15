@@ -11,6 +11,15 @@ WHERE { ?uri a acto:Evento.
   ?uri acto:destacada "true".
 }
 
+#Obtener el listado de temáticas disponibles
+
+PREFIX acto:<http://vocab.linkeddata.es/datosabiertos/def/cultura-ocio/agenda#>
+SELECT DISTINCT ?id ?nombre WHERE {
+  ?uriCont a acto:Evento.			
+  ?uriCont skos:broader ?tema.
+  ?tema skos:notation ?id.
+  ?tema skos:prefLabel ?nombre.
+}
 
 #Actividades cercanas a un monumento (ej. id=32)
 
