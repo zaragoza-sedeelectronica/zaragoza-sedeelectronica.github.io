@@ -1,3 +1,11 @@
+# Todos los organismos con su URI y nombre, y la URI de su organismo padre
+PREFIX orgzar: <http://vocab.linkeddata.es/kos/sector-publico/> 
+PREFIX w3org: <http://www.w3.org/ns/org#> 
+SELECT DISTINCT ?uri ?nombre ?uriPadre WHERE {
+        ?uri a orgzar:organismo. 
+        ?uri rdfs:label ?nombre.
+        ?uri w3org:unitOf ?uriPadre.
+}
 # Entidades de primer nivel, debe de ser nivel = 2 porque el nivel 1 es para describir al Ayuntamiento de Zaragoza
 PREFIX orgzar: <http://vocab.linkeddata.es/kos/sector-publico/> 
 PREFIX org: <http://datos.gob.es/voc/sector-publico/org#> 
