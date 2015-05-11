@@ -6,6 +6,32 @@ SELECT DISTINCT ?uri ?nombre ?uriPadre WHERE {
         ?uri rdfs:label ?nombre.
         ?uri w3org:unitOf ?uriPadre.
 }
+# Lista completa de organismos, con toda su jerarquía asociada
+PREFIX orgzar: <http://vocab.linkeddata.es/kos/sector-publico/>
+PREFIX w3org: <http://www.w3.org/ns/org#>
+SELECT DISTINCT ?nombre1 ?uriNivel2 ?nombre2 ?uriNivel3 ?nombre3 ?uriNivel4 ?nombre4 ?uriNivel5 ?nombre5 ?uriNivel6 ?nombre6 WHERE {
+        <http://www.zaragoza.es/api/recurso/sector-publico/organismo/1> rdfs:label ?nombre1
+        OPTIONAL{?uriNivel2 a orgzar:organismo.
+          ?uriNivel2 rdfs:label ?nombre2.
+          ?uriNivel2 w3org:unitOf <http://www.zaragoza.es/api/recurso/sector-publico/organismo/1>.
+          ?uriNivel2 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "2".
+          OPTIONAL{?uriNivel3 a orgzar:organismo.
+            ?uriNivel3 rdfs:label ?nombre3.
+            ?uriNivel3 w3org:unitOf ?uriNivel2 .
+            ?uriNivel3 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "3".
+            OPTIONAL{?uriNivel4 a orgzar:organismo.
+              ?uriNivel4 rdfs:label ?nombre4.
+              ?uriNivel4 w3org:unitOf ?uriNivel3 .
+              ?uriNivel4 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "4".
+              OPTIONAL{?uriNivel5 a orgzar:organismo.
+                ?uriNivel5 rdfs:label ?nombre5.
+                ?uriNivel5 w3org:unitOf ?uriNivel4 .
+                ?uriNivel5 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "5".
+                OPTIONAL{?uriNivel6 a orgzar:organismo.
+                  ?uriNivel6 rdfs:label ?nombre6.
+                  ?uriNivel6 w3org:unitOf ?uriNivel5 .
+                  ?uriNivel6 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "6".}}}}}
+}
 # Entidades de primer nivel, debe de ser nivel = 2 porque el nivel 1 es para describir al Ayuntamiento de Zaragoza
 PREFIX orgzar: <http://vocab.linkeddata.es/kos/sector-publico/> 
 PREFIX org: <http://datos.gob.es/voc/sector-publico/org#> 
