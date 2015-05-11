@@ -9,7 +9,7 @@ SELECT DISTINCT ?uri ?nombre ?uriPadre WHERE {
 # Lista completa de organismos, con toda su jerarquía asociada
 PREFIX orgzar: <http://vocab.linkeddata.es/kos/sector-publico/>
 PREFIX w3org: <http://www.w3.org/ns/org#>
-SELECT DISTINCT ?nombre1 ?uriNivel2 ?nombre2 ?uriNivel3 ?nombre3 ?uriNivel4 ?nombre4 ?uriNivel5 ?nombre5 ?uriNivel6 ?nombre6 WHERE {
+SELECT DISTINCT ?nombre1 ?uriNivel2 ?nombre2 ?uriNivel3 ?nombre3 ?uriNivel4 ?nombre4 ?uriNivel5 ?nombre5 ?uriNivel6 ?nombre6 ?uriNivel7 ?nombre7 ?uriNivel8 ?nombre8 ?uriNivel9 ?nombre9 ?uriNivel10 ?nombre10 WHERE {
         <http://www.zaragoza.es/api/recurso/sector-publico/organismo/1> rdfs:label ?nombre1
         OPTIONAL{?uriNivel2 a orgzar:organismo.
           ?uriNivel2 rdfs:label ?nombre2.
@@ -30,7 +30,23 @@ SELECT DISTINCT ?nombre1 ?uriNivel2 ?nombre2 ?uriNivel3 ?nombre3 ?uriNivel4 ?nom
                 OPTIONAL{?uriNivel6 a orgzar:organismo.
                   ?uriNivel6 rdfs:label ?nombre6.
                   ?uriNivel6 w3org:unitOf ?uriNivel5 .
-                  ?uriNivel6 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "6".}}}}}
+                  ?uriNivel6 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "6".
+                  OPTIONAL{?uriNivel7 a orgzar:organismo.
+                    ?uriNivel7 rdfs:label ?nombre7.
+                    ?uriNivel7 w3org:unitOf ?uriNivel6 .
+                    ?uriNivel7 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "7".
+                    OPTIONAL{?uriNivel8 a orgzar:organismo.
+                      ?uriNivel8 rdfs:label ?nombre8.
+                      ?uriNivel8 w3org:unitOf ?uriNivel7 .
+                      ?uriNivel8 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "8".
+                      OPTIONAL{?uriNivel9 a orgzar:organismo.
+                        ?uriNivel9 rdfs:label ?nombre9.
+                        ?uriNivel9 w3org:unitOf ?uriNivel8 .
+                        ?uriNivel9 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "9".
+                        OPTIONAL{?uriNivel10 a orgzar:organismo.
+                          ?uriNivel10 rdfs:label ?nombre10.
+                          ?uriNivel10 w3org:unitOf ?uriNivel9 .
+                          ?uriNivel10 <http://datos.gob.es/voc/sector-publico/org#hierarchicalLevel> "10".}}}}}}}}}
 }
 # Entidades de primer nivel, debe de ser nivel = 2 porque el nivel 1 es para describir al Ayuntamiento de Zaragoza
 PREFIX orgzar: <http://vocab.linkeddata.es/kos/sector-publico/> 
