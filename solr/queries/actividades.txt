@@ -1,0 +1,31 @@
+#Actividades de los próximos 7 días del tema Teatro
+
+http://www.zaragoza.es/buscador/select?fl=uri,title,id,description,fechaInicio_dt,fechaFinal_dt,imagen_s,lugar_t,coordenadas_p_0_coordinate,coordenadas_p_1_coordinate,coordenadas_p&fq=temas_smultiple:(%22Teatro%22)&json.wrf=angular.callbacks._0&q=*:*+AND+-tipocontenido_s:estatico+AND+category:Actividades+AND+fechaInicio_dt:%5B*+TO+NOW%2B7DAY%5D+AND+fechaFinal_dt:%5BNOW%2B7DAY+TO+*%5D&rows=100&start=0&wt=json
+
+#Actividades de los próximos 7 días del tema Exposiciones y museos
+
+http://www.zaragoza.es/buscador/select?fl=uri,title,id,description,fechaInicio_dt,fechaFinal_dt,imagen_s,lugar_t,coordenadas_p_0_coordinate,coordenadas_p_1_coordinate,coordenadas_p&fq=temas_smultiple:(%22Exposiciones%20y%20museos%22)&json.wrf=angular.callbacks._1&q=*:*+AND+-tipocontenido_s:estatico+AND+category:Actividades+AND+fechaInicio_dt:%5B*+TO+NOW%2B7DAY%5D+AND+fechaFinal_dt:%5BNOW%2B7DAY+TO+*%5D&rows=100&start=0&wt=json
+
+#Actividades de los próximos 7 días del tema Tecnología y ciudadanía
+
+http://www.zaragoza.es/buscador/select?fl=uri,title,id,description,fechaInicio_dt,fechaFinal_dt,imagen_s,lugar_t,coordenadas_p_0_coordinate,coordenadas_p_1_coordinate,coordenadas_p&fq=temas_smultiple:(%22Tecnolog\u00eda%20y%20Ciudadan\u00eda%22)&json.wrf=angular.callbacks._2&q=*:*+AND+-tipocontenido_s:estatico+AND+category:Actividades+AND+fechaInicio_dt:%5B*+TO+NOW%2B7DAY%5D+AND+fechaFinal_dt:%5BNOW%2B7DAY+TO+*%5D&rows=100&start=0&wt=json
+
+#Actividades de los próximos 7 días del tema Música
+
+http://www.zaragoza.es/buscador/select?fl=uri,title,id,description,fechaInicio_dt,fechaFinal_dt,imagen_s,lugar_t,coordenadas_p_0_coordinate,coordenadas_p_1_coordinate,coordenadas_p&fq=temas_smultiple:(%22M\u00fasica%22)&json.wrf=angular.callbacks._3&q=*:*+AND+-tipocontenido_s:estatico+AND+category:Actividades+AND+fechaInicio_dt:%5B*+TO+NOW%2B7DAY%5D+AND+fechaFinal_dt:%5BNOW%2B7DAY+TO+*%5D&rows=100&start=0&wt=json
+
+#Actividades de los próximos 7 días del tema Gastronomía
+
+http://www.zaragoza.es/buscador/select?fl=uri,title,id,description,fechaInicio_dt,fechaFinal_dt,imagen_s,lugar_t,coordenadas_p_0_coordinate,coordenadas_p_1_coordinate,coordenadas_p&fq=temas_smultiple:(%22Gastronom\u00eda%22)&json.wrf=angular.callbacks._4&q=*:*+AND+-tipocontenido_s:estatico+AND+category:Actividades+AND+fechaInicio_dt:%5B*+TO+NOW%2B7DAY%5D+AND+fechaFinal_dt:%5BNOW%2B7DAY+TO+*%5D&rows=100&start=0&wt=json
+
+#Actividades de los próximos 7 días del tema Danzas y bailes
+
+http://www.zaragoza.es/buscador/select?fl=uri,title,id,description,fechaInicio_dt,fechaFinal_dt,imagen_s,lugar_t,coordenadas_p_0_coordinate,coordenadas_p_1_coordinate,coordenadas_p&fq=temas_smultiple:(%22Danzas/Bailes%22)&json.wrf=angular.callbacks._5&q=*:*+AND+-tipocontenido_s:estatico+AND+category:Actividades+AND+fechaInicio_dt:%5B*+TO+NOW%2B7DAY%5D+AND+fechaFinal_dt:%5BNOW%2B7DAY+TO+*%5D&rows=100&start=0&wt=json
+
+#Actividades de los próximos 7 días del tema Medio ambiente
+
+http://www.zaragoza.es/buscador/select?fl=uri,title,id,description,fechaInicio_dt,fechaFinal_dt,imagen_s,lugar_t,coordenadas_p_0_coordinate,coordenadas_p_1_coordinate,coordenadas_p&fq=temas_smultiple:(%22Medio%20Ambiente%22)&json.wrf=angular.callbacks._6&q=*:*+AND+-tipocontenido_s:estatico+AND+category:Actividades+AND+fechaInicio_dt:%5B*+TO+NOW%2B7DAY%5D+AND+fechaFinal_dt:%5BNOW%2B7DAY+TO+*%5D&rows=100&start=0&wt=json
+
+#Actividades de los próximos 7 días del tema Deportes
+
+http://www.zaragoza.es/buscador/select?fl=uri,title,id,description,fechaInicio_dt,fechaFinal_dt,imagen_s,lugar_t,coordenadas_p_0_coordinate,coordenadas_p_1_coordinate,coordenadas_p&fq=temas_smultiple:(%22Deportes%22)&json.wrf=angular.callbacks._7&q=*:*+AND+-tipocontenido_s:estatico+AND+category:Actividades+AND+fechaInicio_dt:%5B*+TO+NOW%2B7DAY%5D+AND+fechaFinal_dt:%5BNOW%2B7DAY+TO+*%5D&rows=100&start=0&wt=json
