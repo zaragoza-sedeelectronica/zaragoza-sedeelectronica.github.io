@@ -36,6 +36,13 @@ http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.geojson?sort=sta
 # [7] Título, descripción, fotografía y fechas de los últimos eventos con entrada libre en xml
 http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.xml?fl=title,description%,image,startDate,endDate,tipoEntrada&sort=startDate desc&q=tipoEntrada==libre
 
+# [8] 50 primeros eventos de las Fiestas del Pilar (festividad local). Festividades locales en: http://www.zaragoza.es/ciudad/actividades/fiestas_locales/default.htm
+http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.json?start=0&rows=50&q=programa==Fiestas del Pilar
+
+# [9] 50 primeros eventos de Verano (festividad local). Festividades locales en: http://www.zaragoza.es/ciudad/actividades/fiestas_locales/default.htm
+http://www.zaragoza.es/api/recurso/cultura-ocio/evento-zaragoza.json?start=0&rows=50&q=programa==Verano
+
+
 
 
 
