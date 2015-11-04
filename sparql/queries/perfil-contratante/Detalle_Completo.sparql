@@ -1,5 +1,6 @@
 PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
 PREFIX s: <http://schema.org/>
+PREFIX xsd: >http://www.w3.org/2001/XMLSchema#>
 PREFIX pc: <http://purl.org/procurement/public-contracts#>
 PREFIX gr: <http://purl.org/goodrelations/v1#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -49,7 +50,7 @@ WHERE {
         } 
     } 
     {
-      SELECT DISTINCT ?contrato count(?tender) AS ?numLicitadores 
+      SELECT DISTINCT ?contrato (count(?tender) AS ?numLicitadores) 
         WHERE {
           ?contrato a pproc:Contract;
           a ?type;pc:tender ?tender.
