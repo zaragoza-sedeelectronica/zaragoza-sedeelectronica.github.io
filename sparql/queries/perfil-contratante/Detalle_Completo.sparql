@@ -50,7 +50,7 @@ WHERE {
         } 
     } 
     {
-      SELECT DISTINCT ?contrato count(?tender) AS ?numLicitadores 
+      SELECT DISTINCT ?contrato (count(?tender) AS ?numLicitadores) 
         WHERE {
           ?contrato a pproc:Contract;
           a ?type;pc:tender ?tender.
