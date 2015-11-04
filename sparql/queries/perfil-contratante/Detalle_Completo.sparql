@@ -57,3 +57,4 @@ WHERE {
       GROUP BY ?contrato
     }
 }
+limit 1000
