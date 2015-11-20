@@ -1,0 +1,29 @@
+PREFIX pproc: <http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+SELECT DISTINCT ?contrato ?titulo ?objeto_principal ?importe ?dias_para_preparar ?fecha_limite WHERE {
+  ?contrato a pproc:Contract;
+                   pproc:contractProcedureSpecifications ?procedimiento;
+                   dcterms:title ?titulo.
+  ?procedimiento pproc:tenderDeadline ?fecha_limite.
+  ?contrato pproc:contractObject ?objeto.
+  ?objeto pproc:mainObject ?objeto_principal.
+  ?objeto pproc:contractEconomicConditions ?condiciones_economicas.
+  ?condiciones_economicas pproc:budgetPrice ?presupuesto.
+  ?presupuesto gr:hasCurrencyValue ?importe;
+  gr:valueAddedTaxIncluded "false"^^xsd:boolean.
+  BIND (  (MONTH(?fecha_limite) - MONTH(now()) - 1) * 30 
+           + DAY(?fecha_limite) +  (30 - DAY(now()))    
+            as ?dias_para_preparar )
+  FILTER (?fecha_limite >= now() &&
+                ?dias_para_preparar >= 7 &&
+                YEAR(?fecha_limite) = YEAR(now()) &&
+               ?importe >= 500 &&
+               ?importe <= 18000 &&
+               regex(?titulo, "xxxx", "i"))
+} 
+ORDER BY DESC (?fecha_limite) DESC(?importe)
+LIMIT 100
