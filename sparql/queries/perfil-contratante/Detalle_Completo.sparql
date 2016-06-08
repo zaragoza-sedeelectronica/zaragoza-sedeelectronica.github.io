@@ -5,7 +5,7 @@ PREFIX pc: <http://purl.org/procurement/public-contracts#>
 PREFIX gr: <http://purl.org/goodrelations/v1#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-SELECT DISTINCT ?contrato ?nombreContrato ?type ?adjudicatario ?impLicitacionSinIVA ?impLicitacionConIVA ?impCanon 
+SELECT DISTINCT ?contrato ?nombreContrato (group_concat(distinct ?type;separator=",")) as ?type ?adjudicatario ?impLicitacionSinIVA ?impLicitacionConIVA ?impCanon 
 ?impAdjudicacionSinIVA ?impAdjudicacionConIVA ?procedimiento ?entidad ?servicio ?numLicitadores 
 WHERE {
   ?contrato dcterms:title ?nombreContrato;
