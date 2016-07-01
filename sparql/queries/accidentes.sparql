@@ -1,7 +1,7 @@
 # Número total de accidentes registrados
-select COUNT(?Concepto) AS ?numero
+select COUNT(DISTINCT ?accidente) AS ?numero
 Where{
-  ?Concepto a <http://vocab.linkeddata.es/datosabiertos/def/transporte/accidentalidad-trafico#Accidente>. 
+  ?accidente a <http://vocab.linkeddata.es/datosabiertos/def/transporte/accidentalidad-trafico#Accidente>. 
 }
 
 # 100 accidentes en los que se ha visto implicado un peatón
