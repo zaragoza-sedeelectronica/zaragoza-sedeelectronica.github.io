@@ -4,7 +4,7 @@ Where{
   ?Concepto a <http://vocab.linkeddata.es/datosabiertos/def/transporte/accidentalidad-trafico#Accidente>. 
 }
 
-# 100 primeros Accidentes en los que se ha visto implicado un peatón
+# 100 accidentes en los que se ha visto implicado un peatón
 PREFIX accidente: <http://vocab.linkeddata.es/datosabiertos/def/transporte/accidentalidad-trafico#>
 select distinct ?uri ?comentario ?fecha  (group_concat(distinct ?calle;separator=" - ")) as ?calle
 where {
