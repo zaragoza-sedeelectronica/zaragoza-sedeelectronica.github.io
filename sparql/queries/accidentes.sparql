@@ -1,0 +1,17 @@
+# Número total de accidentes registrados
+select COUNT(?Concepto) AS ?numero
+Where{
+  ?Concepto a <http://vocab.linkeddata.es/datosabiertos/def/transporte/accidentalidad-trafico#Accidente>. 
+}
+
+# Accidentes en los que se ha visto implicado un peatón
+PREFIX accidente: <http://vocab.linkeddata.es/datosabiertos/def/transporte/accidentalidad-trafico#>
+select distinct ?uri ?comentario ?fecha ?calle
+where {
+     ?uri a accidente:Accidente;
+     	accidente:afectado ?afectado;
+     	rdfs:comment ?comentario;
+     	s:streetAddress ?calle;
+     	dcterms:created ?fecha.
+     ?afectado accidente:rolEnVehiculo	"peaton"
+} LIMIT 100
