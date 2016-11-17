@@ -13,5 +13,5 @@ where {
      	rdfs:comment ?comentario;
      	s:streetAddress ?calle;
      	dcterms:created ?fecha.
-     ?afectado accidente:rolEnVehiculo	"peaton"
+     ?afectado accidente:rolEnVehiculo/skos:notation	"peaton"
 } LIMIT 100
