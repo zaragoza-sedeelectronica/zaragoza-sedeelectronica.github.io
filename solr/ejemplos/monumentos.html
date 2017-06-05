@@ -1,89 +1,92 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
     <title>Monumentos Zaragoza</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style type="text/css">
-    #resultados {
-        width: 65%;
-        float: left;
+    .boton {
+        margin-top: 1em;
     }
-    #facetas {
-        width: 35%;
-        float: right;
-    }
-    .boton{margin-top:1em;}
     </style>
 </head>
 
 <body>
     <div class="container">
+    <img class="pull-right" src="http://www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto.png" alt="Ayuntamiento de Zaragoza" />
+                <h1>Monumentos Zaragoza</h1>
+                <p>B&uacute;squeda facetada de <span class="label label-primary">Monumentos</span> por el campo <em>estilo_smultiple</em>
+                </p>
+                <p class="boton"><a class="btn btn-default" role="button" href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/solr/ejemplos/monumentos.html">Ver código fuente</a></p>
         <div class="row">
-            <img class="pull-right" src="http://www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto.png" alt="Ayuntamiento de Zaragoza" />
-            <h1>Monumentos Zaragoza</h1>
-            <p>B&uacute;squeda facetada de monumentos por el campo <strong>estilo_smultiple</strong>
-            </p>
-            <p class="boton"><a class="btn btn-default" role="button" href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/solr/ejemplos/monumentos.html">Ver código fuente</a></p>
-            <div id="resultados">
-                <ul></ul>
+            <div class="col-md-9">
+                
+                <div id="resultados">
+                    <ul></ul>
+                </div>
             </div>
-            <div id="facetas">
-                <ul></ul>
+            <div class="col-md-3">
+                <div id="facetas">
+                    <h2>Estilos <small>(<em>estilo_smultiple</em>)</small></h2>
+                    <ul class="list-group"></ul>
+                </div>
             </div>
-            <script src="../../js/jquery-1.10.2.min.js"></script>
-            <script type="text/javascript">
-            var SOLR_ENDPOINT = 'http://www.zaragoza.es/buscador/select?';
-            var query = '*:*';
-            var start = 0;
-            var rows = 1000;
-            var facet = 'estilos_smultiple';
-            var category = '("Monumentos")';
-        
-            mostrar(""); // Por defecto mostramos sin ningún filtro de faceta
-        
-            function mostrar(fq) {
-                if (fq !== "") {
-                    fq = '"' + fq + '"';
-                }
-                $.ajax({
-                    method: 'JSONP',
-                    url: SOLR_ENDPOINT,
-                    dataType: "jsonp",
-                    data: {
-                        'json.wrf': 'JSON_CALLBACK',
-                        'wt': 'json',
-                        'start': start || 0,
-                        'rows': rows || 100,
-                        'facet': 'true',
-                        'facet.field': facet,
-                        'facet.mincount': 1,
-                        'fl': 'uri,title,id,texto_t,x_coordinate,y_coordinate,last_modified,temas_smultiple',
-                        'q': query + ' AND -tipocontenido_s:estatico AND category:' + category,
-                        'fq': fq
-                    }
-                });
-            }
-        
-            function JSON_CALLBACK(respuesta) {
-                var obj;
-                $("#resultados ul").empty();
-                for (var i = 0; i < respuesta.response.docs.length; i++) {
-                    obj = respuesta.response.docs[i];
-                    $("#resultados ul").append('<li>' + obj.title + '</li>');
-                }
-                $("#facetas ul").empty();
-                for (var i = 0; i < respuesta.facet_counts.facet_fields[facet].length; i++) {
-                    respuesta.facet_counts.facet_fields[facet][i];
-                    var txt = '<button onclick="mostrar(\'' + respuesta.facet_counts.facet_fields[facet][i] + '\')">' + respuesta.facet_counts.facet_fields[facet][i] + '</button>';
-                    i = i + 1;
-                    txt = txt + '(' + respuesta.facet_counts.facet_fields[facet][i] + ')';
-                    $("#facetas ul").append('<li>' + txt + '</li>');
-                }
-            }
-            </script>
         </div>
     </div>
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+    var SOLR_ENDPOINT = 'http://www.zaragoza.es/buscador/select?';
+    //var SOLR_ENDPOINT = 'https://www.zaragoza.es/sede/servicio/buscador?'
+    var query = '*:*';
+    var start = 0;
+    var rows = 1000;
+    var facet = 'estilos_smultiple';
+    var category = '("Monumentos")';
+
+    mostrar(""); // Por defecto mostramos sin ningún filtro de faceta
+
+    function mostrar(fq) {
+        if (fq !== "") {
+            fq = '"' + fq + '"';
+        }
+        $.ajax({
+            method: 'JSONP',
+            url: SOLR_ENDPOINT,
+            dataType: "jsonp",
+            data: {
+                'json.wrf': 'JSON_CALLBACK',
+                'wt': 'json',
+                'start': start || 0,
+                'rows': rows || 100,
+                'facet': 'true',
+                'facet.field': facet,
+                'facet.mincount': 1,
+                'fl': 'uri,title,id,texto_t,x_coordinate,y_coordinate,last_modified,temas_smultiple',
+                'q': query + ' AND -tipocontenido_s:estatico AND category:' + category,
+                'fq': fq
+            }
+        });
+    }
+
+    function JSON_CALLBACK(respuesta) {
+        var obj;
+        $("#resultados ul").empty();
+        for (var i = 0; i < respuesta.response.docs.length; i++) {
+            obj = respuesta.response.docs[i];
+            $("#resultados ul").append('<li>' + obj.title + '</li>');
+        }
+        $("#facetas ul").empty();
+        for (var i = 0; i < respuesta.facet_counts.facet_fields[facet].length; i++) {
+            respuesta.facet_counts.facet_fields[facet][i];
+            var txt = '<button class="btn btn-default" onclick="mostrar(\'' + respuesta.facet_counts.facet_fields[facet][i] + '\')">' + respuesta.facet_counts.facet_fields[facet][i] + '</button>';
+            i = i + 1;
+            txt = txt + '<span class="badge">' + respuesta.facet_counts.facet_fields[facet][i] + '</span>';
+            $("#facetas ul").append('<li class="list-group-item">' + txt + '</li>');
+        }
+    }
+    </script>
 </body>
 
 </html>

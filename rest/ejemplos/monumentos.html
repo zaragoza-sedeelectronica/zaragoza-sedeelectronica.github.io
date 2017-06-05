@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Monumentos Zaragoza</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/leaflet.css" />
+    <link rel="stylesheet" href="../../css/MarkerCluster.css" />
+    <link rel="stylesheet" href="../../css/MarkerCluster.Default.css" />
+    <script src="../../js/leaflet.js"></script>
+    <script src="../../js/leaflet.ajax.min.js"></script>
+    <script src="../../js/leaflet.markercluster.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img class="pull-right" src="http://www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto.png" alt="Ayuntamiento de Zaragoza" />
+                <h1>Monumentos Zaragoza</h1>
+                <div id="mapa-leaflet" style="height:30em;margin-bottom:1em;"></div>
+                <p class="boton"><a class="btn btn-default" role="button" href="https://github.com/zaragoza-sedeelectronica/zaragoza-sedeelectronica.github.io/blob/master/api/ejemplos/monumentos.html">Ver código fuente</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/capas.js"></script>
+    <script type="text/javascript">
+    var rest = 'https://www.zaragoza.es/sede/servicio/monumento.geojson?srsname=wgs84&rows=2000&fl=id,title,description,geometry';
+    $('.boton').prepend('<div><strong>Recurso API REST v2: </strong><a href="'+rest+'">'+rest+'</a></div>');
+    $.getJSON(rest, function(data) {
+        var geojson = L.geoJson(data, {
+            onEachFeature: function(feature, layer) {
+                var txt;
+                txt = '<strong>' + feature.properties.title + '</strong><br/>' + feature.properties.description;
+                layer.bindPopup(txt);
+            }
+        });
+        map.fitBounds(geojson.getBounds());
+        markers = L.markerClusterGroup();
+        markers.addLayer(geojson);
+        map.addLayer(markers);
+    });
+    </script>
+</body>
+
+</html>

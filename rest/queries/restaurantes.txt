@@ -1,0 +1,28 @@
+#
+#	Cátalogo de conjunto de datos: Restaurantes
+#	Directorio de restaurantes en la ciudad de Zaragoza
+#	Enlace de acceso: http://www.zaragoza.es/docs-api/#!/restaurante
+#	Licencia: http://www.zaragoza.es/ciudad/servicios/avisolegal.htm#condiciones
+#
+
+# [1] 50 primeros restaurantes en formato json y srs en utm30 (por defecto)
+https://www.zaragoza.es/sede/servicio/restaurante.json
+
+# [2] 50 primeros restaurantes en formato jsonld y srs en wsg84
+https://www.zaragoza.es/sede/servicio/restaurante.jsonld?srsname=wgs84
+
+# [3] 100 primeros restaurantes en formato json filtrados por nombre, calle, teléfono, número de tenedores y srs en utm30
+https://www.zaragoza.es/sede/servicio/restaurante.json?rows=100&fl=title,streetAddress,tel,tenedores,geometry
+
+# [4] 50 primeros restaurantes de dos tenedores en formato rdf y srs utm30
+https://www.zaragoza.es/sede/servicio/restaurante.rdf?q=tenedores==2
+
+# [5] Información de los 5 restaurantes más cercanos al edificio Etopia en un radio de 500 metros en formato json
+https://www.zaragoza.es/sede/servicio/restaurante.json?srsname=wgs84&rows=5&point=-0.906942,41.659565&distance=500
+
+# [6] Nombre y teléfono de los 5 restaurantes más cercanos a la Basílica de Ntra. Sra. del Pilar en un radio de 250 metros en formato jsonld
+https://www.zaragoza.es/sede/servicio/restaurante.json?fl=title,tel&srsname=wgs84&rows=5&point=-0.878516,41.656772&distance=250
+
+# [7] Restaurantes con capacidad para más de 1000 comensales en formato xml
+https://www.zaragoza.es/sede/servicio/restaurante.xml?q=capacidad=gt=1000
+

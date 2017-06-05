@@ -3,7 +3,7 @@ package es.azar;
 import es.api.Rest;
 
 public class Agenda {
-	private static final String API = "/api/recurso/cultura-ocio/evento-zaragoza";
+	private static final String API = "/sede/servicio/cultura/evento";
 
 	public static void main(String[] args) {
 		
