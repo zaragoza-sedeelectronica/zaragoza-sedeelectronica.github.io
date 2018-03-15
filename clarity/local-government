@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Clarity Project. Ayuntamiento de Zaragoza</title><meta name="description" content="The CLARITY project is a two-year project funded by the European Commission under the Horizon 2020 framework, that brings together stakeholder networks across Europe into an engaged and mobilised community that supports innovation in open eGovernment applications." /><meta name="description" content="The CLARITY project is a two-year project funded by the European Commission under the Horizon 2020 framework, that brings together stakeholder networks across Europe into an engaged and mobilised community that supports innovation in open eGovernment applications." /><meta name="keywords" content="Clarity project, European Commission, Horizon 2020, Europe, eGovernment, transparency" /><meta name="author" content="Ayuntamiento de Zaragoza. Unidad de Gestión de la Web Municipal. webmunicipal@zaragoza.es" /><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <link rel="home" href="http://www.zaragoza.es" title="Página Inicio. " />
+<link rel="index" href="http://www.zaragoza.es/ciudad/servicios/mapaweb.htm" title="Mapa web. " />
+<link rel="search" href="http://buscador.zaragoza.es/" title="Buscador. " />
+<link rel="copyright" href="http://www.zaragoza.es/ciudad/servicios/copy.htm" title="Copyright. " />
+<link rel="author" href="mailto:sedeelectronica@zaragoza.es" title="Contacto. " />
+
+<link rel="stylesheet" href="/cont/assets/css/main.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<!--[if lt IE 9]>
+<script src="//www.zaragoza.es/cont/plantillas/js/html5shiv-3.7.3.min.js"></script>
+<script src="//www.zaragoza.es/cont/plantillas/js/respond-1.4.2.min.js"></script>
+<link rel="stylesheet" href="//www.zaragoza.es/cont/plantillas/bs/css/ie-9.css"/>
+<![endif]-->
+    
+
+    
+       <link rel="stylesheet" href="//www.zaragoza.es/cont/vistas/portal/clarity/css/blueprint.css" />
+</head>
+
+<body>
+    <div id="sectores">
+        <header class="navbar">
+            
+            <div class="container-fluid">
+            <nav><ul vocab="http://rdf.data-vocabulary.org/" class="breadcrumb destacado margin-b1em"><li><span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="https://clarity-csa.eu/" target="_blank"> Clarity Project</a></span></li><li><span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="https://clarity-csa.eu/portfolio-classic-3cols" target="_blank"> Marketplace</a></span></li><li><span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="https://clarity.codefor.nl/" target="_blank"> Case studies</a></span></li><li><span lang="es" xml:lang="es"><a href="/sede/portal/clarity/es/">Versión español</a></span></li></ul></nav>
+                
+                <a class="logo pull-left" href="https://clarity-csa.eu/" title="Ir a la página principal de la Sede Electrónica del Ayuntamiento de Zaragoza">
+    
+    <img src="/cont/paginas/clarity/img/clarity_icon_white.png" alt="" />
+</a>
+
+                 
+                  <div class="pull-left portal-header ">
+                
+                    <div class=""><h1><a href="http://www.zaragoza.es/sede/portal/clarity/">                            <img class="cabecera img-responsive margin-auto" src="/cont/paginas/clarity/img/logo_blueprint_pacifico.png" alt="Clarity Project Blueprint" /></a></h1></div>
+
+                   
+                </div>
+                
+
+<!-- <header class="navbar navbar-default navbar-static-top"> -->
+    <!-- <div class="container-fluid"> -->
+        <!-- <a class="logo pull-left" href="//www.zaragoza.es" title="Ir a la página principal de la Sede Electrónica del Ayuntamiento de Zaragoza"> 
+            <img height="50" class="hidden-xs" src="//www.zaragoza.es/aytocasa/enlinea/ayto.gif" alt="Logotipo Ayuntamiento de Zaragoza" /> 
+            <img class="visible-xs" src="//www.zaragoza.es/cont/paginas/bs/img/aytoLogoCorto_old.png" alt="Logotipo Abreviado Ayuntamiento de Zaragoza" /> 
+        </a> -->
+
+        <!-- <form class="pull-right search-form form-inline" id="gs" method="get" th:action="${titlePortal} ? (${path} ? ${path} : './list') : '/sede/servicio/buscador'"> -->
+        <form class="pull-right search-form form-inline" id="gs" method="get" action="/sede/servicio/buscador">
+            
+                <div class="form-group has-feedback nomargin">
+                    <!--<label for="input-search-desktop" class="oculto">Buscador</label>
+                    <input th:if="${path}" type="hidden" name="path" th:value="${path}"/>-->
+                    <!-- <input th:if="${query}" type="hidden" id="input-search-tag" name="fq" th:value="${query}"/> -->
+                  <!--  <input id="input-search-desktop" class="form-control visible-md visible-lg" type="text" name="query" size="15" maxlength="256" th:placeholder="${query} != null ? 'Buscar' : 'Buscar en zaragoza.es'" />
+                    <span class="form-control-feedback search-tag" th:if="${titlePortal}">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <th:block th:utext="${#utils.decode(titlePortal)}"></th:block>
+                    </span>-->
+                </div>
+              <!--  <button type="submit" class="btn btn-search" style="background:none;" aria-label="Buscar"><span class="fa fa-2x fa-inverse fa-search" aria-hidden="true"></span></button>-->
+            
+
+            
+    
+          <!--  <span class="btn btn-sitemap"><span class="fa fa-2x fa-inverse fa-sitemap" aria-hidden="true" title="Mapa de la web"></span></span>-->
+
+            
+
+            <div class="btn-group">
+                <button type="button" class="btn dropdown-toggle" style="background:none;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span aria-hidden="true" class="fa fa-2x fa-inverse fa-user"></span> <span aria-hidden="true" class="fa fa-inverse user-letter">r</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="/sede/servicio/zona-personal">Zona personal</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/sede/acceso/salir?r=%2Fsede%2Fportal%2Fclarity%2Flocal-government">Cerrar sesión</a></li>
+                </ul>
+            </div>
+
+            
+        </form>
+
+    <!-- </div> -->
+
+    <nav class="navegacion-portales" style="display: none;">
+        <div class="row no-gutter" role="tablist" aria-multiselectable="true">
+            <div class="col-xs-12 col-sm-4 col-md-2">
+                <div class="ogob panel-heading">
+                    <a class="accordion-toggle" role="button" aria-expanded="false" aria-controls="accordion-ogob" data-toggle="collapse" href="#accordion-ogob">
+                        Gobierno Abierto
+                    </a>
+                    <!-- <a href="/ciudadania/gobierno-abierto/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_gabierto.png" alt="Gobierno Abierto" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">Gobierno Abierto</div>
+                    </a> -->
+                </div>
+                <div id="accordion-ogob" class="panel-collapse collapse in">
+                    <ul class="nav">
+                        <li class="indice"><a href="/ciudadania/gobierno-abierto/">Servicios destacados<span class="oculto"> de Gobierno Abierto</span></a></li>
+                        <li><a href="/ciudadania/gobierno-abierto/transparencia/agendaabierta.htm">Agenda Abierta</a></li>
+                        <li><a href="/ciudadania/gobierno-abierto/participar/aytoresponde/default.htm?tab=respuestas">Ayuntamiento Responde</a></li>
+                        <li><a href="/ciudadania/gobierno-abierto/espacios/civicos/civicos.htm">Centros Cívicos</a></li>
+                        <li><a href="/ciudad/risp/">Datos Abiertos</a></li>
+                        <li><a href="/ciudadania/gobierno-abierto/espacios/">En los Barrios</a></li>
+                        <li><a href="/ciudadania/gobierno-abierto/espacios/juntas/">Juntas Municipales y Vecinales</a></li>
+                        <li><a href="/ciudadania/gobierno-abierto/participar/">Participar y Colaborar</a></li>
+                        <li><a href="https://www.zaragoza.es/ciudad/ticketing/verNuevaQuejaAnonima_Ticketing">Quejas y Sugerencias</a></li>
+                        <li><a href="/ciudadania/gobierno-abierto/transparencia/">Transparencia</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-2">
+                <div class="ayto panel-heading">
+                    <a class="accordion-toggle" role="button" aria-expanded="false" aria-controls="accordion-ayto" data-toggle="collapse" href="#accordion-ayto">
+                        El Ayuntamiento
+                    </a>
+                    <!-- <a href="/ciudad/ayto/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_ayto.png" alt="El Ayuntamiento" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">El Ayuntamiento</div>
+                    </a> -->
+                </div>
+                <div id="accordion-ayto" class="panel-collapse collapse in">
+                    <ul class="nav">
+                        <li class="indice"><a href="/ciudad/ayto/">Servicios destacados<span class="oculto"> del Ayuntamiento</span></a></li>
+                        <li><a href="/ciudad/encasa/agua/">Agua</a></li>
+                        <li><a href="/ciudad/organizacion/alcalde/">Alcalde</a></li>
+                        <li><a href="/ciudad/usic/">Archivo, Biblioteca, Hemeroteca</a></li>
+                        <li><a href="/ciudad/gestionmunicipal/ayudasysubvenciones/">Ayudas y Subvenciones</a></li>
+                        <li><a href="/ciudad/bomberos/">Bomberos</a></li>
+                        <li><a href="/ciudad/gestionmunicipal/calidad/">Calidad</a></li>
+                        <li><a href="/ciudad/encasa/hacienda/">Hacienda y Economía</a></li>
+                        <li><a href="/ciudad/igualdad/">Igualdad</a></li>
+                        <li><a href="/ciudad/normativa/">Normativa</a></li>
+                        <li><a href="/ciudad/noticias/index_Noticia">Noticias</a></li>
+                        <li><a href="/oferta/">Oferta de Empleo</a></li>
+                        <li><a href="/ciudad/organizacion/">Organización</a></li>
+                        <li><a href="https://www.zaragoza.es/ciudad/gestionmunicipal/contratos/">Perfil del Contratante</a></li>
+                        <li><a href="/ciudad/policia/">Policia</a></li>
+                        <li><a href="/sede/servicio/premios-concursos/">Premios y Concursos</a></li>
+                        <li><a href="/ciudad/saneamiento/">Saneamiento</a></li>
+                        <li><a href="/ciudad/tablon/index_Tablon">Tablón</a></li>
+                        <li><a href="/ciudad/encasa/tramites.htm">Trámites y Servicios</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-2">
+                <div class="ciudad panel-heading">
+                    <a class="accordion-toggle" role="button" aria-expanded="false" aria-controls="accordion-ciudad" data-toggle="collapse" href="#accordion-ciudad">
+                        La Ciudad
+                    </a>
+                    <!-- <a href="/ciudad/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_ciudad.png" alt="La Ciudad" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">La Ciudad</div>
+                    </a> -->
+                </div>
+                <div id="accordion-ciudad" class="panel-collapse collapse in">
+                    <ul class="nav">
+                        <li class="indice"><a href="/ciudad/">Servicios destacados<span class="oculto"> de La Ciudad</span></a></li>
+                        <li><a href="/ciudad/educacionybibliotecas/bibliotecasmunicipales/">Bibliotecas</a></li>
+                        <li><a href="http://idezar.zaragoza.es/callejero/">Callejero</a></li>
+                        <li><a href="/ciudad/cementerios/">Cementerios</a></li>
+                        <li><a href="/ciudad/consumo/">Consumo</a></li>
+                        <li><a href="/ciudad/deporte/">Deporte</a></li>
+                        <li><a href="/ciudad/educacion/">Educación</a></li>
+                        <li><a href="/ciudad/educacionybibliotecas/">Educación y Bibliotecas (Patronato)</a></li>
+                        <li><a href="/sede/servicio/equipamiento/list">Equipamientos</a></li>
+                        <li><a href="/ciudad/idezar/"><abbr title="Infraestructuras de datos espaciales del Ayuntamiento de Zaragoza">IDEZAR</abbr></a></li>
+                        <li><a href="/ciudad/zaragozainternacional/">Internacional</a></li>
+                        <li><a href="/ciudad/limpia/">Limpieza</a></li>
+                        <li><a href="/ciudad/medioambiente/">Medio Ambiente</a></li>
+                        <li><a href="/ciudad/viapublica/movilidad/">Movilidad</a></li>
+                        <li><a href="/ciudad/estadistica/">Observatorio Estadística</a></li>
+                        <li><a href="/ciudad/IMSP/">Salud</a></li>
+                        <li><a href="/ciudad/sinbarreras/">Sin Barreras</a></li>
+                        <li><a href="/ciudad/urbanismo/">Urbanismo</a></li>
+                        <li><a href="/ciudad/vistasciudad/enlace/turismo/es/webcam_Virtual">Visual</a></li>
+                        <li><a href="/sede/portal/voluntariado/">Voluntariado</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-2">
+                <div class="cultura panel-heading">
+                    <a class="accordion-toggle" role="button" aria-expanded="false" aria-controls="accordion-cultura" data-toggle="collapse" href="#accordion-cultura">
+                        Cultura
+                    </a>
+                    <!-- <a href="/ciudad/cultura/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_cultura.png" alt="Cultura" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">Cultura</div>
+                    </a> -->
+                </div>
+                <div id="accordion-cultura" class="panel-collapse collapse in">
+                    <ul class="nav">
+                        <li class="indice"><a href="/ciudad/cultura">Servicios destacados<span class="oculto"> de Cultura</span></a></li>
+                        <li><a href="/ciudad/actividades/">Agenda Cultural</a></li>
+                        <li><a href="/ciudad/artepublico/buscar_ArtePublico/">Arte Público</a></li>
+                        <li><a href="/ciudad/museos/es/chistoria">Centro de Historias</a></li>
+                        <li><a href="https://www.zaragoza.es/sede/servicio/equipamiento/list?fq=temas_smultiple:(%22Cultura+y+Ocio%22)">Equipamientos de Cultura</a></li>
+                        <li><a href="/ciudad/cultura/ayudas.htm">Convocatorias de cultura</a></li>
+                        <!--<li><a href="/ciudad/cultura/agenda/">Guía de Ocio</a></li>-->
+                        <li><a href="/ciudad/museos/es/activ/activ-didacticas.htm">Museos: Actividades Didácticas</a></li>
+                        <li><a href="/ciudad/bomberos/detalle_Centro?id=4465">Museo de los Bomberos</a></li>
+                        <li><a href="/ciudad/museos/es/foro">Museo Foro <em>Caesaraugusta</em></a></li>
+                        <li><a href="/ciudad/museos/es/puerto">Museo Puerto Fluvial <em>Caesaraugusta</em></a></li>
+                        <li><a href="/ciudad/museos/es/teatro">Museo Teatro <em>Caesaraugusta</em></a></li>
+                        <li><a href="/ciudad/museos/es/termas">Museo Termas <em>Caesaraugusta</em></a></li>
+                        <li><a href="/ciudad/museos/es/gargallo">Museo Pablo Gargallo</a></li>
+                        <li><a href="/ciudad/cultura/observatorio/">Observatorio de cultura</a></li>
+                        <li><a href="/ciudad/cultura/patrimonio/enlace/cultura/observatorio/directorios/patrimonio.htm">Patrimonio</a></li>
+                        <li><a href="/ciudad/catalogopublicaciones/">Publicaciones</a></li>
+                        <li><a href="/ciudad/cultura/zaragozacultural/">Sociedad Zaragoza Cultural</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-2">
+                <div class="sectores panel-heading">
+                    <a class="accordion-toggle" role="button" aria-expanded="false" aria-controls="accordion-sectores" data-toggle="collapse" href="#accordion-sectores">
+                        Para la Gente
+                    </a>
+                    <!-- <a href="/ciudad/sectores/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_gente.png" alt="Para la Gente" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">Para la Gente</div>
+                    </a> -->
+                </div>
+                <div id="accordion-sectores" class="panel-collapse collapse in">
+                    <ul class="nav">
+                        <li class="indice"><a href="/ciudad/sectores/">Servicios destacados<span class="oculto"> de Para la Gente</span></a></li>
+                        <li><a href="/ciudad/sectores/adicciones/">Atención / Prevención Adicciones</a></li>
+                        <li><a href="/ciudad/sectores/casaculturas/">Casa de las Culturas</a></li>
+                        <li><a href="/ciudad/sectores/coopdesarrollo/">Cooperación al Desarrollo</a></li>
+                        <li><a href="/ciudad/sectores/social/">Derechos Sociales</a></li>
+                        <li><a href="/sede/servicio/equipamiento/list">Equipamientos</a></li>
+                        <li><a href="/ciudad/sectores/jovenes/">Juventud</a></li>
+                        <li><a href="/ciudad/sectores/infancia/">Infancia</a></li>
+                        <li><a href="/ciudad/sectores/mayores/">Mayores</a></li>
+                        <li><a href="/ciudad/sectores/mujer/">Mujeres</a></li>
+                        <li><a href="/ciudad/sectores/pich/">Oficina PICH</a></li>
+                        <li><a href="/ciudad/sectores/tarjetaciudadana/">Tarjeta Ciudadana</a></li>
+                        <li><a href="/ciudad/sectores/tecnologia/">Tecnología y Ciudadanía</a></li>
+                        <li><a href="/ciudad/sectores/activa/">Zaragoza Activa</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-2">
+                <div class="turismo panel-heading">
+                    <a class="accordion-toggle" role="button" aria-expanded="false" aria-controls="accordion-turismo" data-toggle="collapse" href="#accordion-turismo">
+                        Turismo
+                    </a>
+                    <!-- <a href="/turismo/">
+                        <img src="//www.zaragoza.es/cont/paginas/bs/img/home/navegacion/icono_turismo.png" alt="Turismo" class="hidden-xs"/>
+                        <div class="visible-xs padding-l1em">Turismo</div>
+                    </a> -->
+                </div>
+                <div id="accordion-turismo" class="panel-collapse collapse in">
+                    <ul class="nav">
+                        <li class="indice"><a href="/ciudad/turismo/">Servicios destacados<span class="oculto"> de Turismo</span></a></li>
+                        <li><a href="/ciudad/turismo/es/agenda/agenda.htm">Agenda</a></li>
+                        <li><a href="/ciudad/turismo/es/organiza-viaje/como-llegar/como-llegar.htm">Organiza tu Viaje</a></li>
+                        <li><a href="/ciudad/turismo/es/profesionales/quienes-somos.htm">Profesionales</a></li>
+                        <li><a href="/ciudad/turismo/es/que-visitar/sitios-interes/sitios-interes.htm">Qué Visitar</a></li>
+                        <li><a href="/ciudad/turismo/es/servicios/oficinas-de-turismo.htm">Servicios</a></li>
+                        <li><a href="/ciudad/turismo/es/para-todos/zaragoza-accesible.htm">Zaragoza para Todos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-networks well text-center nomargin" itemscope="itemscope" itemtype="http://schema.org/Organization">
+    <link itemprop="url" href="https://www.zaragoza.es" />
+    <ul class="list-inline nomargin padding-r05em">
+        <li>
+            <a itemprop="sameAs" href="http://twitter.com/zaragoza_es">
+                <span class="fa fa-twitter-square fa-3x" aria-hidden="true"></span>
+                <span class="sr-only">Twitter</span>
+            </a>
+        </li>
+        <li>
+            <a itemprop="sameAs" href="http://www.facebook.com/www.zaragoza.es">
+                <span class="fa fa-facebook-square fa-3x" aria-hidden="true"></span>
+                <span class="sr-only">Facebook</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.flickr.com/photos/zaragoza_es/sets/">
+                <span class="fa fa-flickr fa-3x" aria-hidden="true"></span>
+                <span class="sr-only">Flickr</span>
+            </a>
+        </li>
+        <li>
+            <a itemprop="sameAs" href="https://www.youtube.com/user/webzgz">
+                <span class="fa fa-youtube-square fa-3x" aria-hidden="true"></span>
+                <span class="sr-only">Youtube</span>
+            </a>
+        </li>
+        <li>
+            <a itemprop="sameAs" href="https://www.instagram.com/Zaragoza_es">
+                <span class="fa fa-instagram fa-3x" aria-hidden="true"></span>
+                <span class="sr-only">Instagram</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.zaragozaciudad.net/">
+                <span class="fa fa-comment fa-3x" aria-hidden="true"></span>
+                <span class="sr-only">Blog</span>
+                
+            </a>
+        </li>
+    </ul>
+    <div class="margin-t05em">
+        <a class="destacado" href="//www.zaragoza.es/ciudadania/gobierno-abierto/participar/redes-sociales.htm">Directorio de redes municipales</a>
+    </div>
+</div>
+
+        
+    </nav>
+<!-- </header> -->
+
+                <!-- <th:block th:include="fragmentos/readspeaker"></th:block> -->
+            </div>
+        </header>
+    <div id="wrapper">
+        <nav role="navigation" class="container-fluid margin-b1em">
+            <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2">
+                    <a class="elemento" href="/sede/portal/clarity/recommendations">
+                        Recommendations
+                    </a>
+                </li>
+                <li class="col-xs-6 col-sm-2">
+                    <a class="elemento" href="/sede/portal/clarity/summary">
+                        Summary
+                    </a>
+                </li>
+                <li class="col-xs-6 col-sm-1 dropdown">
+                    <a class="elemento dropdown-toggle" id="healthDropdownLink" href="/sede/portal/clarity/health">
+                        Health
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="healthDropdownLink">
+                        <a href="/sede/portal/clarity/health#Factsheet">Factsheet</a>
+                        <a href="/sede/portal/clarity/health#blue">Blueprint</a>
+                        <a href="https://clarity-csa.eu/portfolio-classic-3cols?art_portfolio_categories_tid=14">Marketplace</a>
+                    </div>
+                </li>
+                <li class="col-xs-6 col-sm-2 dropdown">
+                    <a class="elemento dropdown-toggle" id="localGovermentDropdownLink" href="/sede/portal/clarity/local-government">
+                        Local Government
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="localGovermentDropdownLink">
+                       <a href="/sede/portal/clarity/local-government#Factsheet">Factsheet</a><br />
+                        <a href="/sede/portal/clarity/local-government#blue">Blueprint</a><br />
+                        <a href="https://clarity-csa.eu/portfolio-classic-3cols?art_portfolio_categories_tid=11">Marketplace</a>
+                    </div>
+                </li>
+                <li class="col-xs-6 col-sm-3 dropdown">
+                    <a class="elemento dropdown-toggle" id="smallBusinessDropdownLink" href="/sede/portal/clarity/small-business">
+                        Small Business and Self-employed
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="smallBusinessDropdownLink">
+                       <a href="/sede/portal/clarity/small-business#Factsheet">Factsheet</a><br />
+                        <a href="/sede/portal/clarity/small-business#blue">Blueprint</a><br />
+                        <a href="https://clarity-csa.eu/portfolio-classic-3cols?art_portfolio_categories_tid=50">Marketplace</a>
+                    </div>
+                </li>
+                <li class="col-xs-6 col-sm-2 dropdown">
+                    <a class="elemento dropdown-toggle" id="disabilityBusinessDropdownLink" href="/sede/portal/clarity/disability">
+                        Disability
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="disabilityBusinessDropdownLink">
+                            <a href="/sede/portal/clarity/disability#Factsheet">Factsheet</a><br />
+                        <a href="/sede/portal/clarity/disability#blue">Blueprint</a><br />
+                        <a href="https://clarity-csa.eu/portfolio-classic-3cols?art_portfolio_categories_tid=90">Marketplace</a>
+                    </div>
+                </li>
+            </ul>
+            <!-- <ul class="list-unstyled row no-gutter text-center" id="menu">
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/clarity/recommendations">Recommendations</a></li>
+                   <li class="col-xs-6 col-sm-2">
+                
+                <a class="elemento" href="/sede/portal/clarity/summary">Summary</a></li>
+                <li class="col-xs-6 col-sm-1"><a class="elemento" href="/sede/portal/clarity/health"> Health</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/clarity/local-government">Local Government</a></li>
+                <li class="col-xs-6 col-sm-3"><a class="elemento" href="/sede/portal/clarity/small-business">Small Business and Self-employed</a></li>
+                <li class="col-xs-6 col-sm-2"><a class="elemento" href="/sede/portal/clarity/disability">Disability</a></li> 
+            </ul> -->
+        </nav>
+        
+        
+        
+        
+    <main id="main"><div id="rscont" class="container-fluid">
+        <img class="cabecera img-responsive full-width" src="/cont/paginas/clarity/img/clarity-cover-2.jpg" alt="" />   
+
+         <div class="row margin-b1em">
+            <h2 class="text-center">Next steps for Open eGovernment services related to Local Government</h2>
+<div class="col-md-12">
+	<h3 id="factsheet">1. Factsheet on General Practice Local Government</h3>
+	<div class="row">
+	<div class="col-md-6">
+               <div class="full-screen-box">
+		<h3 class="text-center nomargin">Available and emerging solutions </h3>
+                    <hr class="sm" />
+                   <ul><li>Notification services.</li><li>Personalised local government services.</li><li>One-stop-shop.</li><li>Services that apply emerging technologies such as blockchain and artificial intelligence to award participation, facilitate search, provide answers to users, manage records, etc.</li><li>Services that provide or exploit open data.</li><li>Open source software for local government’s services. </li><li>eDemocracy and eParticipation services.</li><li>Applications for accountability.</li>
+</ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="full-screen-box">
+		<h3 class="text-center nomargin">Emerging business and data models </h3>
+                    <hr class="sm" />
+                   <ul><li>Stakeholders that co-create services.</li>
+<li>Public employees and organisations that assist stakeholders in the access and use of open eGovernment services, or regarding compliance with laws.</li>
+<li>Positions for tasks such as live chat, forum moderation, email communication, etc.</li>
+<li>Companies, organisations and public administrations that create (innovative) eGovernment solutions that exploit open data and services.</li>
+<li>Companies that offer consulting services to public administrations on technology roadmaps.</li></ul>
+                </div>
+            </div>
+             <div class="col-md-6">
+               <div class="full-screen-box">
+		<h3 class="text-center nomargin">Gaps </h3>
+                    <hr class="sm" />
+                   <ul><li>Need for implementation of EU directives and policies.</li>
+<li>Lack of strategies for eGovernment and open government at local level.</li>
+<li>Low technology skills of staff in local governments.</li>
+<li>Little availability of mobile applications.</li>
+<li>Low interoperability of services.</li>
+<li>Non-secure vote management and discussion management for eDemocracy.</li>
+<li>Lack of preparation to adapt data storage and manipulation to GDPR.</li></ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="full-screen-box">
+		<h3 class="text-center nomargin">Social considerations </h3>
+                    <hr class="sm" />
+                   <ul><li>Change in the labour force, especially in administrative roles.</li>
+<li>Equity and Digital divide.</li></ul>
+                </div>
+            </div>
+                        <div class="col-md-6">
+               <div class="full-screen-box">
+		<h3 class="text-center nomargin">Recommendations </h3>
+                    <hr class="sm" />
+                   <ul><li>Applying user-centred design methodologies and tools.</li>
+<li>Creating proactive personalised eGovernment services.</li>
+<li>Making universally accessible services.</li>
+<li>Providing open eGovernment services in multiple languages.</li>
+<li>Increasing the number of ubiquitous services.</li>
+<li>Developing cross-border services.</li>
+<li>Meeting the once-only principle.</li>
+<li>Providing open data and algorithm transparency.</li>
+<li>Increasing the use and further development of eDemocracy tools.</li>
+<li>Providing eProcurement, eTender and eInvoicing services. </li></ul>
+                </div>
+            </div>
+        </div>    
+       </div>
+       
+       
+       
+       
+    
+	<h3 id="blue">2. Open eGovernment in Local Government Services</h3>
+            <hr class="sm" />
+<p><em>Open Government</em> is a government with high levels of transparency and with an emphasis on government accountability. The concept of open government suggests that the public should have access to government-held information and that it is informed of government proceedings. It includes expectations for increased participation and collaboration of citizens, businesses, employees and other entities in government proceedings, through the use of modern, <a href="https://opensource.com/resources/open-government" class="external-link" target="_blank">open technologies</a>. The term Open in this context means that data has not only to be accessible but also to be understandable in order for citizens to know how the data can be relevant to them. At the same time, eGovernment refers to the use of computers and other devices to provide information and services to the public. In turn, eGovernance extends the scope of eGovernment to include citizen engagement and participation in governance.</p>
+<p>This document focuses on open eGovernment services that are aimed for local government. Local government institutions vary greatly between countries in terms of size, demography, services they must or can provide, etc. In some countries local authorities have autonomy and a relatively independent economy, so they can decide on their projects and budget whereas in other countries, the central government makes most of the decisions. However, there is a general consensus about the fact that local government is the public administration that is closest to citizens, in contrast to regional, state (or even supranational) level governments.</p>
+
+<blockquote class="blockquote">As described by Shackeleton et al,“If governments are to fully exploit the benefits that can come from mature eGovernment implementations, then local government electronic service delivery must be seen as a vital component.”
+<footer class="blockquote-footer">Peter Shackleton, Julie Fisher and Linda Dawson (2004) Internal and External Factors Impacting on E-Government Maturity: A Local Government Case Study, <cite title="Source Title">Journal of Information Technology Case and Application Research</cite>, 6(4): 36-50, DOI: 10.1080/15228053.2004.10856053</footer></blockquote>
+<p>Governments in general and local ones in particular cannot only enable the use of innovative solutions, but also play an active role in applying them to the open eGovernment services they provide.</p>
+<p>The availability of open data together with open service source components will enable the development of new solutions and will foster reuse by small local governments that lack resources. However, differences in local governments’ decision-making processes hinder this generalization and reuse.</p>
+<p>Finally, political instability and political switches can be a barrier to the development of open eGovernment services. Some politicians lack commitment, they believe that open eGovernment services do not cause an impression on the public, so they do not invest in them</p>
+
+
+      
+	<h3>3. Some available and emerging solutions </h3>
+            <hr class="sm" />
+<p>This section discusses some of the emergent solutions that we have come across while doing desk research on existing eGovernment services in this sector. We have focused on those that are leading the way or show a high level of innovation, and provide examples for some implementations.</p>
+
+<h4>Simplification of administrative procedures for citizens of local governments</h4>
+<ul>
+<li><p><strong>Single notification service.</strong> Several kinds of notifications to different public bodies, such as change of address, can be performed via a single eGovernment notification service. Sometimes, users can also check online the status of their notifications.</p>
+<p>Example: In Spain, there is a convenient way for citizens to <a href="https://cambiodomicilio.redsara.es/pcd/" class="external-link" target="_blank">communicate online their change of address</a> to a number of Public Administrations through a single notification service. This service requires a digital certificate, which is also accepted by equivalent services in Slovequia, Estonia, Portugal and Sweden. </p></li>
+<li><p><strong>Personalised services.</strong> Websites and applications interface which are adaptive to the user’s profile and requirements. </p>
+<p>Example: Skellefteå municipality’s <a href="http://www.skelleftea.se/kommun/press-och-kommunikation/digitala-kanaler/app" class="external-link" target="_blank">“Mitt Skellefteå” (My Skellefteå)</a> is a mobile application (for Android and iPhone) containing a number of local government services that can be personalised by the user.</p> </li>
+<li><p><strong>Services that use blockchain technologies.</strong> In general it can be applied to Digital Property Rights in collaborative work, Electronic Voting or Smart Contracts. Specifically, it can support solutions for identity management, tax collection, land registry and any type of government record.</p>
+<p>Example:  KSI, <a href="https://e-estonia.com/solutions/security-and-safety/ksi-blockchain/" class="external-link" target="_blank">Keyless Signature Infrastructure</a> is a blockchain technology used in Estonia to guarantee the integrity, sovereignty and auditability of government services, processes, public records and documents. It prevents loss of critical digital assets and tracks data securely throughout its supply chain. It may also be applied to local governments.</p></li>
+<li><strong>Services that apply big data and artificial intelligence technologies.</strong> In general, big data techniques can be used for decision-making processes. Natural language processing can be applied to the interaction of citizens with eGovernment services in their native language.</li>
+<li><p><strong>One-stop-shop.</strong> Websites where all local open eGovernment services are available to a citizen or business. </p>
+<p>Example: <a href=" http://www.zaragoza.es/sedeelectronica/" class="external-link" target="_blank">Zaragoza’s (Spain) local government website</a> lets citizens, businesses and other organisations access all of the local procedures (e.g. water, taxes) in one entry point.</p></li>
+</ul>
+<h4>Open data and open source solutions for the provision of local government services</h4>
+<ul><li><p><strong>Services that exploit open data</strong>. Local government open data is made available in a way that can be exploited through services that make it accessible to different stakeholders in this sector.</p> 
+<p>Examples: <a href="https://www.europeandataportal.eu/es/highlights/open-data-european-cities" class="external-link" target="_blank">The European Data Portal analytical report</a> investigates Open Data initiatives in eight medium-sized European cities: <a href="http://otwartygdansk.pl/open-data/" class="external-link" target="_blank">Gdansk</a>, <a href="https://data.stad.gent/" class="external-link" target="_blank">Ghent</a> and <a href="http://dados.cm-lisboa.pt/" class="external-link" target="_blank">Lisbon</a> among the eight. All of these cities have Open Data strategies and portals in place, which are not stand-alone initiatives but are embedded in broader digital or Smart City strategies. Most of the portals are not only focused on publishing data but also include features aimed at engaging with users, such as news items, event sections and feedback mechanisms. </p></li>
+<li><p><strong>Services that use shared vocabularies and linked data.</strong> Standardised terms and their relations to other terms and among different vocabularies can in general improve search and retrieval of local government information. Furthermore, open data published as linked data facilitate the connection of different information sources and give rise to new and innovative applications that improve the search and relevance of retrieved information.</p> 
+<p>Examples: <a href="https://yrityssuomi.fi/en/" class="external-link" target="_blank">The government website in Finland</a> is a multi-facet search website for finding relevant commodities, information and services by using ontologies. Several open data websites such as <a href="http://datos.gob.es/" class="external-link" target="_blank">Spain´s open data government website</a> have published their data as Linked Data and provide a query service. </p></li>
+<li><p><strong>Open source software for local government’s websites and services.</strong> Software systems that provide generic local government website authoring, collaboration, and administration tools, and that are designed to allow the creation and management of services with relative ease. </p>
+<p>Examples: <a href="https://www.kovtp.ee/" class="external-link" target="_blank">Estonia’s Rural Municipality Website</a> is based on an open source content management tool, which allows for easy and uniform site administration. It includes a standard website structure for local governments, tools for site administration and built-in interfacing with public registers. <a href="https://www.fixmystreet.com/" class="external-link" target="_blank">The FixMyStreet Platform</a> is an open code system that allows a website to be launched which helps people to report street problems like potholes and broken streetlights.</p></li></ul>
+<h4>eDemocracy and transparency</h4>
+<ul><li><p><strong>eDemocracy and eParticipation services.</strong> Applications where it is possible for citizens to participate in decision-making, and make their own proposals to start an initiative or a referendum. Citizens can make complaints and suggestions or request new services as well. Sometimes, it is possible to participate through social media platforms. </p>
+<p>Examples: <a href="https://www.citizens.is/portfolio_page/better_reykjavik/" class="external-link" target="_blank">Reykjavik’s Betri Reykjavik (Iceland)</a> is an online participatory social network; citizens can present their ideas on municipal issues ranging from services to operations of the city; it enables citizens to voice, debate and prioritise ideas to improve their city. <a href="https://stemvanwest.amsterdam.nl/" class="external-link" target="_blank">The Stem Van West participation platform</a> in the Netherlands is a participatory platform where people can share their ideas about the city and do participatory budgeting. In Zaragoza (Spain) there is a <a href="https://www.zaragoza.es/sede/servicio/presupuestos-participativos/" class="external-link" target="_blank">Participatory Budgeting program</a>, where citizens can help the council know and prioritise their needs and demands. The platform <a href="https://decide.madrid.es/" class="external-link" target="_blank">Decide Madrid</a> allows citizens participate in proposals for the city improvement, public debate, and participative budgeting, among others. It uses the free software <a href="http://consulproject.org/" class="external-link" target="_blank">Consul</a> as the platform for the different modes of eParticipation.</p></li> 
+<li><p><strong>Applications for accountability.</strong> Applications that present information on where money is spent and how well public services are performing (also in comparison to other services). Not only does this allow people to hold government accountable, but it can also help to improve efficiency, give people a choice in using public services and contribute to economic growth.</p>
+<p>Examples: In the United Kingdom <a href="https://www.gov.uk/performance" class="external-link" target="_blank">the Performance platform</a> presents the performance of government services: cost per transaction, user satisfaction, digital take-up, and completion rate. <a href="http://opendata.comune.fi.it/" class="external-link" target="_blank">Open Budget in Florence</a>, Italy, presents data on the city's annual budget, “so that people can see clearly all costs”. <a href="http://www.opencoesione.gov.it/progetto/en/" class="external-link" target="_blank">Open Cohesion</a> in Italy provides data on the implementation of investments programmed by Regions and State Central Administrations via cohesion policy resources. Public administrations can draw on platforms such as the <a href="http://openbudgets.eu/" class="external-link" target="_blank">OpenBudgets platform</a>, which offers several applications: from easy-to-use budget visualisations to performance comparisons between cities and participatory budgeting mechanisms.</p></li></ul>
+
+
+<h3>4. Some available and emerging business and data models </h3>            <hr class="sm" />
+<p>This section presents business and data models that may contribute to the development and uptake of open eGovernment in the local government sector, as well as models that open eGovernment may foster.</p>
+<ul><li>Local government and citizens that initiate, design, or implement together programs, projects, or activities. This implies the provision of co-creation spaces and of the job positions required for this. </li>
+<li>Public and private organisations that provide spaces for citizens to foster community interaction and collaborative work.</li>
+<li>Public employees and organisations that assist stakeholders in the access and use of open eGovernment services regarding local government. This assistance includes in-person attention and call centres.</li>
+<li>Public employees and organisations that assist stakeholders regarding compliance with laws, directives, regulations, etc. regarding local government.</li>
+<li>Personnel that support local government services in eGovernment websites, by doing tasks such as live chat, forum moderation, email communication, and community management in general.</li>
+<li>Companies that offer consulting services to local governments on technology roadmaps, in order to enable open eGovernment.</li>
+<li>Companies, organisations and public administrations that create (innovative) eGovernment solutions that exploit open data and services provided by public administrations.</li></ul>
+
+
+     
+<h3>5. Gaps: Policy, technology and data </h3><hr class="sm" />
+<p>This section presents a list of policy, technology and data gaps that hinder the provision and take-up of open eGovernment applications in the local government sector. </p>
+<h4>Policy Gaps</h4>
+<ul><li>Only a small portion of local governments have developed their own strategies for eGovernment and open-government.</li>
+<li>Some EU directives and policies related to open eGovernment, need to be fully implemented in Member States (and consequently, at a local level).</li>
+<li>Financing for the adoption of open eGovernment services is often short-term. Often, financial support is provided to public administrations for the introduction of a technology, but not for its maintenance and update.</li>
+<li>Developing and implementing policies where the interaction between the public and the private sectors is clearly established, can greatly help in the provision and take-up of open eGovernment services at local-government level: how can they contribute together, what are the responsibilities of each partner, how private practices can benefit the public sector and vice-versa.</li></ul>
+<h4>Technology and Data Gaps</h4>
+<ul><li>Low technology skills of staff in local governments. Training is needed, on the one hand, to understand the advantages and disadvantages of using ICTs and, on the other hand, to develop the capabilities needed to address the constant evolution of services and applications.</li>
+<li>Lack of mobile applications and responsive websites.</li>
+<li>Low interoperability of eGovernment services both at local and upper levels. Homogenisation and uniformisation of the services provided by local entities, and of the procedures behind them, could help. This would also be key to the reuse of local government applications and services, and consequently, to saving money.</li>
+<li>Insufficient research on the application of disruptive technologies such as artificial intelligence and big data in open eGovernment services at a local level.</li>
+<li>Few open data deployed in an appropriate available way.</li>
+<li>Lack of preparation for adapting data storage and manipulation of local government services to the <a href="http://ec.europa.eu/justice/data-protection/reform/files/regulation_oj_en.pdf" class="external-link" target="_blank">GDPR</a>.</li></ul>
+    
+<h3>6. Social considerations</h3><hr class="sm" />
+<ul>
+<li>The digitalisation of government services for general practice will change the labor force requirements in this sector. For instance, less staff will be needed in local governments to fill out forms whereas other jobs will be generated to support the online services. Governments need to plan on this and implement policies regarding education and new job profiles for their staff.</li>
+<li>Open eGovernment services at the local level (as well as at any other level) should act as drivers of an inclusive society and contribute to reduce (or at least, not to increase), the digital divide.</li></ul>
+
+<h3>7. Recommendations</h3>
+<p>This section presents the list of recommendations for the provision and take-up of open eGovernment applications to enhance accountability, transparency and trust in the local government sector.</p>
+<ul><li><h4>User-centered design</h4>
+In order to create valuable and useful open eGovernment services for the local-government sector, developers should attend the needs and expectations of all stakeholders. As open-eGovernment-service providers, local governments should incorporate user-centered design to their services, whether they develop them or outsource their development. These services should be developed around how users can, want to, or need to use those services, rather than forcing people to use a service that does not meet their expectations.<p>eParticipation can be used as a means to assess existing services, to learn of citizens and businesses’ needs and to co-create new ones.</p></li>
+<li><h4>Universal accessibility of services</h4>
+Universal accessibility is a fundamental requirement for the success of any open eGovernment. In contrast to the private sector, which can be excluding by reaching only target market segments, public administrations should design open eGovernment services that are inclusive by default and cater to the needs of everyone. Local governments are not an exception to this.</li>
+<li><h4>Ubiquitous services (mobiles, tablets and other devices)</h4>
+As mobiles are fast becoming the main device through which people access the internet, it is imperative that more services are provided through mobile friendly websites or apps that would open access to a greater number of citizens and businesses.<p>
+Moreover, public administrations should be up to date on new developments of devices and eGovernment services should be responsive.</p></li>
+<li><h4>Meeting the once-only principle</h4>
+The once-only principle states that a user should not have to supply the same information more than once to public administrations. Open eGovernment services should offer this option to users whenever possible. However, people should not be forced to apply it.<p>
+The use of open source software, open standards and open API will result in more open and scalable ICT systems for public service delivery. This will pave the way for the integration of systems and the implementation of the once-only principle for local government services.</p></li>
+<li><h4>Service personalisation</h4>
+Personalisation is a way to improve user satisfaction by tailoring a service to specific individuals or segments of individuals’ needs. Open eGovernment services should be customisable and adapt to the user or group of users’ profile. These services could be proactive and include applications where users are presented with eGovernment-related steps that need to be taken according to their circumstances, e.g. change of residence. </li>
+<li><h4>Services in multiple languages</h4>
+Language support should include not only the translation of website content but also the translation of forms and documents. This is under-developed and it is hindering access to services by non-native speakers. <p>
+Local governments should provide not only information in the user’s native language, but also fully multilingual open eGovernment services, so that non-native speakers are catered to.</p></li>
+<li><h4>Cross-border services</h4>
+Cross-border provision of services is based on the freedom of movement of services, so that nationals of a EU Member State are able to pursue their activities as citizens or businesses in another EU Member State.<p>
+Citizens living or arriving to a foreign town should be able to access open eGovernment services provided locally. This requires eDocuments implemented cross-border.</p></li>
+<li><h4>People’s access to their own data</h4>
+Allowing citizens to "own", use and amend their data could go a long way to make them more invested in the services they use and more trusting of government. It is important for local governments to understand how people think about their data in relation to public services and how they would like to interact with them. <p>
+This recommendation is especially relevant for the once-only principle. Control on one’s own data should go beyond all or nothing; people should be able to decide what data can be shared and with whom.</p></li>
+<li><h4>Openness of data and services</h4>
+Data and algorithms transparency is essential for digital trust and appropriation of emerging technologies. An important shift deals with control of the data used and the intelligibility of algorithms.<p>
+Openness of data implies the use of standards for data management, digital services and metadata, as well as shared concepts and terms (when available). Openness of services implies the use of open source software where there is no risk of vendor lock-in and code may be reviewed and maintained by the parties involved in the development of solutions. </p>
+<p>The availability of open data together with open service components, will enable the development of new solutions by third parties and the public administration itself, and will foster reuse by small local governments that lack resources for the development of services.</p></li>
+<li><h4>eDemocracy services</h4>
+<p>eDemocracy enhances citizen and businesses engagement and participation in government decision making processes such as policy making, budgeting and service delivery. It is fundamental for user adoption and for building trust towards the public sector.  </p>
+<p>In general, eDemocracy and eParticipation are not offered as services on eGovernment websites in the EU. eGovernment websites need to be transformed in order to support increasing engagement and participation of citizens and businesses, providing features such as web forums, discussion spaces and social media interaction.
+However, a shift in public service delivery and governance needs to accompany a move towards eDemocracy so that citizen input is adequately taken up and used. For instance, there is little sense in creating a consultation service for citizens to suggest where money should be spent if there are not enough people to read and handle the suggestions.</p></li>
+<li><h4>eProcurement services</h4>
+Providing eProcurement, eTender and eInvoicing services is very important to level the playing field and ease access to the information for all businesses, and thus develop the potential for bidding for public contracts procurement opportunities and tenders.<p>
+Local governments should focus on setting up eProcurement and eTender services that are easily accessible for businesses of all sizes and that citizens can look up in order to monitorise the bidding process.</p></li>
+</ul>
+
+
+
+
+</div>
+				
+		
+    </div></main></div>
+    <footer class="fnd-gris-claro margin-t3em" vocab="http://schema.org/" typeof="Organization">
+    <div class="container">
+        <div class="row padding-v05em">
+            <div class="col-xs-12 col-sm-12">
+             <p>   "Clarity - Blueprint" is a part of the Clarity Open eGovernment Services project.</p>
+              <p>The CLARITY project is a two-year project, funded by the European Commission under the Horizon 2020 framework. Grant Agreement number: 693881</p>
+               <!--<p>"Clarity - Blueprint" is available as an open source website, maintained by zaragoza.es on zaragoza_es.github.-->
+            </div>
+           
+        </div>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-30945968-1', {
+    'cookieDomain' : 'zaragoza.es',
+    'allowLinker' : true
+});
+ga('send', 'pageview');
+</script>
+        
+    </div>
+    
+</body>
+
+</html>
+
