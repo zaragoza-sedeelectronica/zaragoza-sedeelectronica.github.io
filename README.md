@@ -8,6 +8,7 @@
     * [Catálogo API Zaragoza](http://zaragoza-sedeelectronica.github.io/rest/ejemplos/catalogo.html).
     * [Delimitación de Juntas Municipales y Vecinales](http://zaragoza-sedeelectronica.github.io/rest/ejemplos/juntas.html).
     * [Recorrido de una procesión de semana santa](http://zaragoza-sedeelectronica.github.io/rest/ejemplos/procesion.html).
+    * [Línea de autobús](http://zaragoza-sedeelectronica.github.io/rest/ejemplos/lineaAutobus.html).
 * Punto SPARQL:
   * [Consultas de ejemplo](http://zaragoza-sedeelectronica.github.io/sparql/queries/). 
   * Ejemplos de uso:
